@@ -2,8 +2,7 @@
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start">
         <div class="mb-8 md:mb-0 max-w-xs">
             <div class="flex items-center space-x-2 mb-4">
-                <img src="placeholder-logo-white.png" alt="ZA & Hi Logo" class="h-8 filter brightness-0 invert">
-                <span class="text-xl font-bold">ZA & Hi</span>
+                <img src="{{ asset('images/logo-white.png') }}" alt="ZA & Hi Logo" class="h-8 filter brightness-0 invert">
             </div>
             <p class="text-sm">
                 CANTI, Alamri, Percaya Diri, Surabaya. <br> 12345

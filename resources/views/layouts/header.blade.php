@@ -1,18 +1,19 @@
 <header class="bg-[#E195AB] shadow-md sticky top-0 z-50">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
         <div class="flex items-center space-x-2">
-            <img src="placeholder-logo.png" alt="ZA & Hi Logo" class="h-8">
+            <img src="{{ asset('images/logo.png') }}" alt="ZA & Hi Logo" class="h-8">
             <span class="text-xl font-bold text-white">ZA & Hi</span>
         </div>
 
         <div class="hidden md:flex space-x-8 items-center text-sm font-semibold">
-            <a href="#" class="text-white hover:text-gray-200 py-1 border-b-2 border-transparent">Home</a>
-            <a href="#" class="text-white hover:text-gray-200 py-1 border-b-2 border-transparent">Produk</a>
-            <a href="#" class="text-white hover:text-gray-200 py-1 border-b-2 border-transparent">Testimoni</a>
-            <a href="#" class="text-white hover:text-gray-200 py-1 border-b-2 border-transparent">Layanan</a>
-            <button class="text-white hover:text-gray-200">
-                <i class="fas fa-shopping-bag fa-lg"></i>
-            </button>
+            <a href="/" class="text-white hover:text-gray-200 py-1 border-b-2 border-transparent">Home</a>
+            <a href="/product" class="text-white hover:text-gray-200 py-1 border-b-2 border-transparent">Produk</a>
+            <a href="/testimoni" class="text-white hover:text-gray-200 py-1 border-b-2 border-transparent">Testimoni</a>
+            <a href="/layanan" class="text-white hover:text-gray-200 py-1 border-b-2 border-transparent">Layanan</a>
+            
+            <a href="/register" class="text-white hover:text-gray-200">
+                <i class="fas fa-user fa-lg"></i>
+            </a>
         </div>
 
         <div class="md:hidden">
@@ -26,10 +27,12 @@
 
     <div id="mobile-menu" class="hidden md:hidden bg-dark-pink">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/20">Home</a>
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/20">Produk</a>
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/20">Testimoni</a>
-            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/20">Layanan</a>
+            <a href="/" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/20">Home</a>
+            <a href="/product" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/20">Produk</a>
+            <a href="/testimoni" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/20">Testimoni</a>
+            <a href="/layanan" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/20">Layanan</a>
+            <a href="/register" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-white/20">Login/Daftar</a>
+        </div>
         </div>
     </div>
 </header>
