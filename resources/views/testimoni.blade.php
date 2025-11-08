@@ -22,7 +22,13 @@
         
         <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">Apasi Kata Sahabat Za&Hi</h1>
         <p class="text-xl sm:text-2xl font-semibold text-gray-600 mb-12">Setelah Treatment di Za&Hi Beauty Care ???</p>
+        {{-- TOMBOL TAMBAH TESTIMONI BARU --}}
+        <a href="/testimoni/create" class="inline-flex items-center justify-center mb-10 py-3 px-8 rounded-full shadow-xl text-white font-bold transition duration-300 transform hover:scale-105" style="background-color: #E195AB;">
+            <i class="fas fa-plus fa-lg mr-2"></i> Tambah Testimoni Anda
+        </a>
 
+        <div class="space-y-12">
+            </div>
         <div class="space-y-12">
 
             <div class="flex flex-col md:flex-row items-center md:items-start p-6 rounded-lg shadow-lg" style="background-color: #E195AB;">

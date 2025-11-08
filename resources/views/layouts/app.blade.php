@@ -26,12 +26,12 @@
         .text-brand-text { color: var(--color-brand-text); }
         
         /* Styling untuk Hero Section dengan Gambar Latar */
-        .hero-bg {
-            background-image: url('placeholder-hero-bg.jpg'); 
-            background-size: cover;
-            background-position: center;
-            background-blend-mode: overlay;
-        }
+        .hero-bg {
+            background-image: url("{{ asset('images/hero-background.jpeg') }}"); 
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
 
         /* Styling untuk menghilangkan scrollbar pada carousel/galeri */
         .no-scrollbar::-webkit-scrollbar { display: none; }

@@ -87,3 +87,11 @@ Route::get('/consultasi', function () {
 Route::get('/chatbot', function () {
     return view('chatbot');
 });
+
+// Rute untuk menampilkan formulir tambah testimoni
+Route::get('/testimoni/create', function () {
+    return view('create_testimoni');
+});
+
+// Route POST untuk memproses dan menyimpan data testimoni
+Route::post('/testimoni', [App\Http\Controllers\ReviewController::class, 'store']);
