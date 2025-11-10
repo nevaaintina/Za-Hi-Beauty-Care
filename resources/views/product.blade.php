@@ -28,12 +28,16 @@
 --}}
 @include('layouts.header')
 
-<section class="py-24 px-4 sm:px-6 lg:px-8 hero-product-bg bg-opacity-70">
+<section class="py-24 px-4 sm:px-6 lg:px-8" 
+         style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('{{ asset('images/produk.jpg') }}'); 
+                background-size: cover; 
+                background-position: center;">
+    
     <div class="max-w-7xl mx-auto text-center">
-        <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-2 tracking-wider drop-shadow-md">
+        <h1 class="text-5xl md:text-6xl font-extrabold text-white drop-shadow-lg mb-2 tracking-wider">
             ZA & Hi Beauty Care
         </h1>
-        <p class="text-4xl md:text-5xl font-semibold drop-shadow-md" style="color: #E195AB;">
+        <p class="text-4xl md:text-5xl font-semibold text-white drop-shadow-lg">
             Product
         </p>
     </div>

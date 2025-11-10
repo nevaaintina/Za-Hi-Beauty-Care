@@ -20,17 +20,22 @@
 {{-- Panggil Header agar link navigasi bekerja --}}
 @include('layouts.header') 
 
-<section class="py-24 px-4 sm:px-6 lg:px-8 hero-layanan-bg bg-opacity-70">
+<section class="py-24 px-4 sm:px-6 lg:px-8" 
+         style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('{{ asset('images/layanan.jpeg') }}'); 
+                background-size: cover; 
+                background-position: center;">
+    
     <div class="max-w-7xl mx-auto text-center">
-        <h1 class="text-5xl md:text-6xl font-extrabold text-white tracking-wider drop-shadow-md" 
-            style="color: #6a4055;"> {{-- Warna teks disesuaikan agar kontras --}}
+        {{-- Warna teks diubah menjadi Putih dan diberi Shadow untuk Kontras --}}
+        <h1 class="text-5xl md:text-6xl font-extrabold text-white drop-shadow-lg tracking-wider mb-8"> 
             ZA & Hi Beauty Care
         </h1>
+        
         <a href="/consultasi" 
-   class="inline-flex items-center py-3 px-8 rounded-lg shadow-xl text-white font-bold text-lg mt-6 transition duration-300 transform hover:scale-105" 
-   style="background-color: #E195AB;">
-    Konsultasi
-</a>
+           class="inline-flex items-center py-3 px-8 rounded-lg shadow-xl text-white font-bold text-lg transition duration-300 transform hover:scale-105" 
+           style="background-color: #E195AB;">
+            Konsultasi
+        </a>
     </div>
 </section>
 
