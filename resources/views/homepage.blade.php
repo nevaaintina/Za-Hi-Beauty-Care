@@ -7,7 +7,7 @@
     @include('layouts.header')
     
     <section class="py-16 px-4 sm:px-6 lg:px-8" 
-         style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('{{ asset('images/hero-background.jpeg') }}'); 
+         style="background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4)), url('{{ asset('images/hero-background.jpeg') }}'); 
                 background-size: cover; 
                 background-position: center;">
     
@@ -15,7 +15,7 @@
         <p class="text-md text-white drop-shadow-md mb-2 font-semibold">Spesial untuk Anda!</p>
         
         {{-- Ganti warna teks menjadi Putih atau warna terang agar kontras dengan lapisan gelap --}}
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-white drop-shadow-lg mb-6">ZA & Hi Beauty Care</h1>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-pink drop-shadow-lg mb-6">ZA & Hi Beauty Care</h1>
         
         <p class="max-w-3xl text-white drop-shadow-md text-lg leading-relaxed">
             Salon kecantikan dengan konsep minimalis modern bernuansa pink yang dirancang untuk memberikan kenyamanan sekaligus pengalaman perawatan yang menyenangkan. Kami hadir sebagai tempat perawatan kecantikan yang menawarkan pelayanan lengkap mulai dari perawatan wajah, tubuh, rambut, hingga skincare, dengan kualitas terbaik dan harga yang bersahabat.
