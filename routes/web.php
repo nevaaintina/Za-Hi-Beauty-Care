@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Pricelist; // Pastikan ini ada
+use App\Http\Controllers\TreatmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,3 +96,6 @@ Route::get('/testimoni/create', function () {
 
 // Route POST untuk memproses dan menyimpan data testimoni
 Route::post('/testimoni', [App\Http\Controllers\ReviewController::class, 'store']);
+
+// Rute untuk menampilkan halaman detail treatment
+Route::get('/treatment/{slug}', [TreatmentController::class, 'show'])->name('treatment.show');

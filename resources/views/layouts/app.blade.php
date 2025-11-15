@@ -38,7 +38,7 @@
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="font-sans text-gray-800">
+<body class="font-Jomolhari text-gray-800">
 
     @yield('content')
     
