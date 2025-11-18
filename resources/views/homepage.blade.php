@@ -97,8 +97,6 @@
         </div>
     </section>
 
-    ---
-
     {{-- 3. PROMO/PRICELIST SECTION --}}
     <section class="py-12 bg-[#FFCFCF] px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto text-center">
@@ -124,8 +122,6 @@
             </div>
         </div>
     </section>
-
-    ---
 
     {{-- 4. GALLERY SECTION --}}
     <section class="py-16 bg-[#F7CFD8] px-4 sm:px-6 lg:px-8">
@@ -158,8 +154,6 @@
             </div>
         </div>
     </section>
-
-    ---
 
     {{-- 5. CERTIFICATE SECTION & CTA --}}
     <section class="py-16 bg-[#FFD5D5] px-4 sm:px-6 lg:px-8">
