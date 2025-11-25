@@ -1,11 +1,9 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Detail Facial Treatment - ZA & Hi'); ?>
 
-@section('title', 'Detail Facial Treatment - ZA & Hi')
+<?php $__env->startSection('content'); ?>
 
-@section('content')
 
-{{-- Panggil Header dan Footer --}}
-@include('layouts.header')
+<?php echo $__env->make('layouts.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
 <section class="min-h-screen py-8 px-4 sm:px-6 lg:px-8" style="background-color: #FFE2E2;">
     <div class="max-w-4xl mx-auto">
@@ -21,7 +19,7 @@
         HYDRA FACIAL
     </p>
     <div class="overflow-hidden rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
-        <img src="{{ asset('images/detail-hydra.png') }}" alt="Hydra Facial" class="w-full h-auto object-cover">
+        <img src="<?php echo e(asset('images/detail-hydra.png')); ?>" alt="Hydra Facial" class="w-full h-auto object-cover">
     </div>
 </a>
 
@@ -30,7 +28,7 @@
         IPL REJUVE FACIAL
     </p>
     <div class="overflow-hidden rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
-        <img src="{{ asset('images/detail-ipl.png') }}" alt="IPL Rejuve Facial" class="w-full h-auto object-cover">
+        <img src="<?php echo e(asset('images/detail-ipl.png')); ?>" alt="IPL Rejuve Facial" class="w-full h-auto object-cover">
     </div>
 </a>
 
@@ -39,7 +37,7 @@
         ANTI AGING FACIAL
     </p>
     <div class="overflow-hidden rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
-        <img src="{{ asset('images/detail-anti-aging.png') }}" alt="Anti Aging Facial" class="w-full h-auto object-cover">
+        <img src="<?php echo e(asset('images/detail-anti-aging.png')); ?>" alt="Anti Aging Facial" class="w-full h-auto object-cover">
     </div>
 </a>
 
@@ -48,7 +46,7 @@
         PREMIUM BRIGHTENING FACIAL
     </p>
     <div class="overflow-hidden rounded-lg shadow-xl hover:shadow-2xl transition duration-300">
-        <img src="{{ asset('images/detail-premium.jpg') }}" alt="Premium Brightening Facial" class="w-full h-auto object-cover">
+        <img src="<?php echo e(asset('images/detail-premium.jpg')); ?>" alt="Premium Brightening Facial" class="w-full h-auto object-cover">
     </div>
 </a>
 
@@ -64,5 +62,6 @@
     </div>
 </section>
 
-@include('layouts.footer')
-@endsection
+<?php echo $__env->make('layouts.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\Za-Hi-Beauty-Care\resources\views\facialdetail.blade.php ENDPATH**/ ?>

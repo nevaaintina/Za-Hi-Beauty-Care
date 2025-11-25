@@ -1,21 +1,19 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'ZA & Hi Beauty Care - Homepage'); ?>
 
-@section('title', 'ZA & Hi Beauty Care - Homepage')
+<?php $__env->startSection('content'); ?>
 
-@section('content')
-
-    @include('layouts.header')
+    <?php echo $__env->make('layouts.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
     
-    {{-- 1. HERO SECTION --}}
+    
     <section class="py-16 px-4 sm:px-6 lg:px-8" 
-          style="background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4)), url('{{ asset('images/hero-background.jpeg') }}'); 
+          style="background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4)), url('<?php echo e(asset('images/hero-background.jpeg')); ?>'); 
                  background-size: cover; 
                  background-position: center;">
     
         <div class="max-w-7xl mx-auto py-12">
             <p class="text-md text-white drop-shadow-md mb-2 font-semibold">Selamat datang di</p>
             
-            {{-- Ganti warna teks menjadi Putih atau warna terang agar kontras dengan lapisan gelap --}}
+            
             <h1 class="text-4xl sm:text-5xl font-extrabold text-7D1C4A drop-shadow-lg mb-6">ZA & Hi Beauty Care</h1>
             
             <p class="max-w-3xl text-white drop-shadow-md text-lg leading-relaxed">
@@ -24,7 +22,7 @@
         </div>
     </section>
 
-    {{-- 2. FAVORITE TREATMENT SECTION (Disesuaikan dengan Gambar) --}}
+    
     <section class="py-16 px-4 sm:px-6 lg:px-8" style="background-color: #fce4e5;">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl font-bold mb-12 text-center text-gray-800">
@@ -33,11 +31,11 @@
             
             <div class="flex flex-col md:flex-row justify-center gap-8">
 
-                {{-- Kartu 1: IPL REJEVU FACIAL --}}
+                
                 <div class="treatment-card w-full md:w-1/3 text-center">
                     <div class="rounded-lg overflow-hidden mb-4 shadow-md"> 
                         <img 
-                            src="{{ asset('images/ipl.png') }}"
+                            src="<?php echo e(asset('images/ipl.png')); ?>"
                             alt="IPL Rejevu Facial" 
                             class="w-full h-auto object-cover rounded-lg"
                         >
@@ -45,20 +43,20 @@
                     <button 
                         class="py-3 w-4/5 text-lg font-medium rounded-lg 
                                transition duration-200 hover:opacity-90 
-                               active:translate-y-0.5 active:shadow-md uppercase" {{-- EFEK BARU DI SINI --}}
+                               active:translate-y-0.5 active:shadow-md uppercase" 
                         style="background-color: #f3a8b4; color: white; border: none;"
                     >
                         IPL REJEVU FACIAL
                     </button>
                 </div>
 
-                {{-- Kartu 2: ANTI AGING FACIAL --}}
+                
             <div class="treatment-card w-full md:w-1/3 text-center">
-                {{-- BUNGKUS DENGAN TAG <a> --}}
-                <a href="{{ route('treatment.show', ['slug' => 'anti-aging-facial']) }}" class="block group"> 
+                
+                <a href="<?php echo e(route('treatment.show', ['slug' => 'anti-aging-facial'])); ?>" class="block group"> 
                     <div class="rounded-lg overflow-hidden mb-4 shadow-md">
                         <img 
-                            src="{{ asset('images/anti_aging.png') }}"
+                            src="<?php echo e(asset('images/anti_aging.png')); ?>"
                             alt="Anti Aging Facial" 
                             class="w-full h-auto object-cover rounded-lg transition duration-300 group-hover:opacity-80"
                         >
@@ -74,11 +72,11 @@
                 </a>
             </div>
 
-                {{-- Kartu 3: HYDRA FACIAL --}}
+                
                 <div class="treatment-card w-full md:w-1/3 text-center">
                     <div class="rounded-lg overflow-hidden mb-4 shadow-md">
                         <img 
-                            src="{{ asset('images/hydra.png') }}"
+                            src="<?php echo e(asset('images/hydra.png')); ?>"
                             alt="Hydra Facial" 
                             class="w-full h-auto object-cover rounded-lg"
                         >
@@ -86,7 +84,7 @@
                     <button 
                         class="py-3 w-4/5 text-lg font-medium rounded-lg 
                                transition duration-200 hover:opacity-90 
-                               active:translate-y-0.5 active:shadow-md uppercase" {{-- EFEK BARU DI SINI --}}
+                               active:translate-y-0.5 active:shadow-md uppercase" 
                         style="background-color: #f3a8b4; color: white; border: none;"
                     >
                         HYDRA FACIAL
@@ -97,67 +95,67 @@
         </div>
     </section>
 
-    {{-- 3. PROMO/PRICELIST SECTION --}}
+    
 <section class="py-20 bg-[#FFCFCF] px-4 sm:px-6 lg:px-8"> 
     <div class="max-w-7xl mx-auto text-center">
         
-        {{-- KONTEN TEKS --}}
+        
         <p class="text-3xl font-semibold text-gray-800 mb-2">"Spook-tacular October Deals!"</p>
         <p class="text-lg text-gray-700 mb-10 max-w-4xl mx-auto">
             Bukan hanya make-up, tapi glowing natural skin yang bikin percaya diri. Nikmati promo khusus bulan Oktober hanya di ZA & Hi Beauty Care "
         </p>
         
-        {{-- Kontainer Carousel --}}
+        
         <div class="relative flex items-center max-w-6xl mx-auto"> 
             
-            {{-- Tombol Kiri (Prev) --}}
+            
             <button id="promoPrevBtn" class="p-2 text-gray-700 absolute left-0 z-20 bg-white rounded-full shadow-lg transition duration-200 hover:scale-110">
                 <i class="fas fa-chevron-left"></i>
             </button>
             
-            {{-- Kontainer Gambar Promo (HARDCODE 5 ITEM MANUAL) --}}
+            
             <div id="promoTrack" class="flex overflow-x-hidden snap-x snap-mandatory space-x-4 p-4 no-scrollbar w-full scroll-smooth">
                 
-                {{-- ITEM 1 --}}
-                {{-- GANTI promo_A.png dengan nama file Anda yang pertama --}}
+                
+                
                 <div class="promo-item flex-shrink-0 w-64 md:w-80 snap-center transition-all duration-300 transform" data-index="0">
-                    <img src="{{ asset('images/promo-1.png') }}" 
+                    <img src="<?php echo e(asset('images/promo-1.png')); ?>" 
                          alt="Promo 1: IPL Rejevu" 
                          class="w-full h-full object-contain rounded-lg shadow-xl"
                     >
                 </div>
 
-                {{-- ITEM 2 --}}
-                {{-- GANTI promo_B.png dengan nama file Anda yang kedua --}}
+                
+                
                 <div class="promo-item flex-shrink-0 w-64 md:w-80 snap-center transition-all duration-300 transform" data-index="1">
-                    <img src="{{ asset('images/promo-2.png') }}" 
+                    <img src="<?php echo e(asset('images/promo-2.png')); ?>" 
                          alt="Promo 2: Big Deal" 
                          class="w-full h-full object-contain rounded-lg shadow-xl"
                     >
                 </div>
 
-                {{-- ITEM 3 --}}
-                {{-- GANTI promo_C.png dengan nama file Anda yang ketiga --}}
+                
+                
                 <div class="promo-item flex-shrink-0 w-64 md:w-80 snap-center transition-all duration-300 transform" data-index="2">
-                    <img src="{{ asset('images/promo-3.png') }}" 
+                    <img src="<?php echo e(asset('images/promo-3.png')); ?>" 
                          alt="Promo 3: Perawatan" 
                          class="w-full h-full object-contain rounded-lg shadow-xl"
                     >
                 </div>
 
-                {{-- ITEM 4 --}}
-                {{-- GANTI promo_D.png dengan nama file Anda yang keempat --}}
+                
+                
                 <div class="promo-item flex-shrink-0 w-64 md:w-80 snap-center transition-all duration-300 transform" data-index="3">
-                    <img src="{{ asset('images/promo-4.png') }}" 
+                    <img src="<?php echo e(asset('images/promo-4.png')); ?>" 
                          alt="Promo 4: Skin Booster" 
                          class="w-full h-full object-contain rounded-lg shadow-xl"
                     >
                 </div>
 
-                {{-- ITEM 5 --}}
-                {{-- GANTI promo_E.png dengan nama file Anda yang kelima --}}
+                
+                
                 <div class="promo-item flex-shrink-0 w-64 md:w-80 snap-center transition-all duration-300 transform" data-index="4">
-                    <img src="{{ asset('images/promo-5.png') }}" 
+                    <img src="<?php echo e(asset('images/promo-5.png')); ?>" 
                          alt="Promo 5: Laser" 
                          class="w-full h-full object-contain rounded-lg shadow-xl"
                     >
@@ -165,7 +163,7 @@
                 
             </div>
             
-            {{-- Tombol Kanan (Next) --}}
+            
             <button id="promoNextBtn" class="p-2 text-gray-700 absolute right-0 z-20 bg-white rounded-full shadow-lg transition duration-200 hover:scale-110">
                 <i class="fas fa-chevron-right"></i>
             </button>
@@ -174,7 +172,7 @@
     </div>
 </section>
 
-    {{-- 4. GALLERY SECTION --}}
+    
     <section class="py-16 bg-[#F7CFD8] px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto text-center">
             <h2 class="text-3xl font-bold mb-4 text-gray-800">Our Gallery</h2>
@@ -187,16 +185,16 @@
                 </button>
                 <div class="flex overflow-x-scroll snap-x snap-mandatory space-x-6 p-4 no-scrollbar">
                     <div class="flex-shrink-0 w-80 h-96 snap-center">
-                        <img src="{{ asset('images/gallery-1.png') }}" alt="Gallery 1" class="w-full h-full object-cover rounded-lg shadow-xl">
+                        <img src="<?php echo e(asset('images/gallery-1.png')); ?>" alt="Gallery 1" class="w-full h-full object-cover rounded-lg shadow-xl">
                     </div>
                     <div class="flex-shrink-0 w-80 h-96 snap-center">
-                        <img src="{{ asset('images/gallery-2.png') }}" alt="Gallery 2" class="w-full h-full object-cover rounded-lg shadow-xl">
+                        <img src="<?php echo e(asset('images/gallery-2.png')); ?>" alt="Gallery 2" class="w-full h-full object-cover rounded-lg shadow-xl">
                     </div>
                     <div class="flex-shrink-0 w-80 h-96 snap-center">
-                        <img src="{{ asset('images/gallery-3.png') }}" alt="Gallery 3" class="w-full h-full object-cover rounded-lg shadow-xl">
+                        <img src="<?php echo e(asset('images/gallery-3.png')); ?>" alt="Gallery 3" class="w-full h-full object-cover rounded-lg shadow-xl">
                     </div>
                     <div class="flex-shrink-0 w-80 h-96 snap-center">
-                        <img src="{{ asset('images/gallery-4.png') }}" alt="Gallery 4" class="w-full h-full object-cover rounded-lg shadow-xl">
+                        <img src="<?php echo e(asset('images/gallery-4.png')); ?>" alt="Gallery 4" class="w-full h-full object-cover rounded-lg shadow-xl">
                     </div>
                 </div>
                 <button class="p-2 text-brand-text absolute right-0 z-10 bg-white rounded-full shadow-lg">
@@ -206,7 +204,7 @@
         </div>
     </section>
 
-    {{-- 5. CERTIFICATE SECTION & CTA --}}
+    
     <section class="py-16 bg-[#FFD5D5] px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto text-center">
             <h2 class="text-3xl font-bold mb-4 text-gray-800">Our Certificate</h2>
@@ -215,13 +213,13 @@
             </p>
             <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12">
                 <div class="w-52 md:w-64">
-                    <img src="{{ asset('images/cert-1.png') }}" alt="Certificate of Completion" class="w-full h-auto object-contain shadow-lg">
+                    <img src="<?php echo e(asset('images/cert-1.png')); ?>" alt="Certificate of Completion" class="w-full h-auto object-contain shadow-lg">
                 </div>
                 <div class="w-64 md:w-80 border-4 border-dark-pink p-2 bg-white shadow-2xl">
-                    <img src="{{ asset('images/cert-2.png') }}" alt="Sertifikat Keahlian" class="w-full h-auto object-contain">
+                    <img src="<?php echo e(asset('images/cert-2.png')); ?>" alt="Sertifikat Keahlian" class="w-full h-auto object-contain">
                 </div>
                 <div class="w-52 md:w-64">
-                    <img src="{{ asset('images/cert-3.png') }}" alt="Certificate of Participant" class="w-full h-auto object-contain shadow-lg">
+                    <img src="<?php echo e(asset('images/cert-3.png')); ?>" alt="Certificate of Participant" class="w-full h-auto object-contain shadow-lg">
                 </div>
             </div>
             
@@ -290,6 +288,7 @@
     });
 </script>
     
-    @include('layouts.footer')
+    <?php echo $__env->make('layouts.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\Za-Hi-Beauty-Care\resources\views/homepage.blade.php ENDPATH**/ ?>

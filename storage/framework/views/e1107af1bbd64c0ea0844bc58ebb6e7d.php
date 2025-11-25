@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title')</title>
+    <title><?php echo $__env->yieldContent('title'); ?></title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -27,7 +27,7 @@
         
         /* Styling untuk Hero Section dengan Gambar Latar */
         .hero-bg {
-            background-image: url("{{ asset('images/hero-background.jpeg') }}"); 
+            background-image: url("<?php echo e(asset('images/hero-background.jpeg')); ?>"); 
             background-size: cover;
             background-position: center;
             background-blend-mode: overlay;
@@ -40,7 +40,7 @@
 </head>
 <body class="font-sans text-gray-800">
 
-    @yield('content')
+    <?php echo $__env->yieldContent('content'); ?>
     
     <script>
         const menuToggle = document.getElementById('menu-toggle');
@@ -51,4 +51,4 @@
         });
     </script>
 </body>
-</html>
+</html><?php /**PATH C:\laragon\www\Za-Hi-Beauty-Care\resources\views\layouts\app.blade.php ENDPATH**/ ?>

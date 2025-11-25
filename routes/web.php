@@ -99,3 +99,4 @@ Route::post('/testimoni', [App\Http\Controllers\ReviewController::class, 'store'
 
 // Rute untuk menampilkan halaman detail treatment
 Route::get('/treatment/{slug}', [TreatmentController::class, 'show'])->name('treatment.show');
+
