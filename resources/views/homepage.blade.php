@@ -226,7 +226,7 @@
             </div>
             
             <div class="max-w-7xl mx-auto text-center mt-12">
-                <a href="https://wa.me/yourphonenumber" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-full shadow-xl transition duration-300 transform hover:scale-105">
+                <a href="https://wa.me/yournumberphone" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-full shadow-xl transition duration-300 transform hover:scale-105">
                     <i class="fab fa-whatsapp text-xl mr-2"></i>
                     <span class="font-bold">Klaim Promo Sekarang</span>
                 </a>
