@@ -1,20 +1,57 @@
 <?php
 
-use Illuminate\Foundation\Application;
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
-// Determine if the application is in maintenance mode...
+/*
+|--------------------------------------------------------------------------
+| Check If The Application Is Under Maintenance
+|--------------------------------------------------------------------------
+|
+| If the application is in maintenance / demo mode via the "down" command
+| we will load this file so that any pre-rendered content can be shown
+| instead of starting the framework which could cause an exception.
+|
+*/
+
 if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
     require $maintenance;
 }
 
-// Register the Composer autoloader...
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader for
+| our application. We just need to utilize it! We'll require it into the
+| script here so that we do not have to worry about manually loading any
+| of our application's PHP classes.
+|
+*/
+
 require __DIR__.'/../vendor/autoload.php';
 
-// Bootstrap Laravel and handle the request...
-/** @var Application $app */
+/*
+|--------------------------------------------------------------------------
+| Run The Application
+|--------------------------------------------------------------------------
+|
+| Once we have the application, we can run it and send the responses
+| back to the browser, allowing our users to enjoy the creative and
+| wonderful application we have prepared for them.
+|
+*/
+
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
-$app->handleRequest(Request::capture());
+$kernel = $app->make(Kernel::class);
+
+$response = $kernel->handle(
+    $request = Request::capture()
+);
+
+$response->send();
+$kernel->terminate($request, $response);
