@@ -4,292 +4,373 @@
 
 @section('content')
 
-    @include('layouts.header')
-    
-    {{-- 1. HERO SECTION --}}
-    <section class="py-16 px-4 sm:px-6 lg:px-8" 
-          style="background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4)), url('{{ asset('images/hero-background.jpeg') }}'); 
-                 background-size: cover; 
-                 background-position: center;">
-    
-        <div class="max-w-7xl mx-auto py-12">
-            <p class="text-md text-white drop-shadow-md mb-2 font-semibold">Selamat datang di</p>
-            
-            {{-- Ganti warna teks menjadi Putih atau warna terang agar kontras dengan lapisan gelap --}}
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-7D1C4A drop-shadow-lg mb-6">ZA & Hi Beauty Care</h1>
-            
-            <p class="max-w-3xl text-white drop-shadow-md text-lg leading-relaxed">
-                Salon kecantikan dengan konsep minimalis modern bernuansa pink yang dirancang untuk memberikan kenyamanan sekaligus pengalaman perawatan yang menyenangkan. Kami hadir sebagai tempat perawatan kecantikan yang menawarkan pelayanan lengkap mulai dari perawatan wajah, tubuh, rambut, hingga skincare, dengan kualitas terbaik dan harga yang bersahabat.
-            </p>
-        </div>
-    </section>
+@include('layouts.header')
 
-    {{-- 2. FAVORITE TREATMENT SECTION (Disesuaikan dengan Gambar) --}}
-    <section class="py-16 px-4 sm:px-6 lg:px-8" style="background-color: #fce4e5;">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold mb-12 text-center text-gray-800">
-                Favorite Treatment
-            </h2>
-            
-            <div class="flex flex-col md:flex-row justify-center gap-8">
+{{-- ========================================================= --}}
+{{-- STYLE: Scroll Reveal --}}
+{{-- ========================================================= --}}
+<style>
+    .scroll-reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s ease-out;
+    }
+    .scroll-reveal.revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
 
-                {{-- Kartu 1: IPL REJEVU FACIAL --}}
-                <div class="treatment-card w-full md:w-1/3 text-center">
-                    <div class="rounded-lg overflow-hidden mb-4 shadow-md"> 
-                        <img 
-                            src="{{ asset('images/ipl.png') }}"
-                            alt="IPL Rejevu Facial" 
-                            class="w-full h-auto object-cover rounded-lg"
-                        >
-                    </div>
-                    <button 
-                        class="py-3 w-4/5 text-lg font-medium rounded-lg 
-                               transition duration-200 hover:opacity-90 
-                               active:translate-y-0.5 active:shadow-md uppercase" {{-- EFEK BARU DI SINI --}}
-                        style="background-color: #f3a8b4; color: white; border: none;"
-                    >
-                        IPL REJEVU FACIAL
-                    </button>
-                </div>
+{{-- ========================================================= --}}
+{{-- HERO / BANNER --}}
+{{-- ========================================================= --}}
+<section class="relative w-full h-[300px] md:h-[450px] overflow-hidden scroll-reveal">
 
-                {{-- Kartu 2: ANTI AGING FACIAL --}}
-            <div class="treatment-card w-full md:w-1/3 text-center">
-                {{-- BUNGKUS DENGAN TAG <a> --}}
-                <a href="{{ route('treatment.show', ['slug' => 'anti-aging-facial']) }}" class="block group"> 
-                    <div class="rounded-lg overflow-hidden mb-4 shadow-md">
-                        <img 
-                            src="{{ asset('images/anti_aging.png') }}"
-                            alt="Anti Aging Facial" 
-                            class="w-full h-auto object-cover rounded-lg transition duration-300 group-hover:opacity-80"
-                        >
-                    </div>
-                    <button 
-                        class="py-3 w-4/5 text-lg font-medium rounded-lg 
-                               transition duration-200 hover:opacity-90 
-                               active:translate-y-0.5 active:shadow-md uppercase" 
-                        style="background-color: #f3a8b4; color: white; border: none;"
-                    >
-                        ANTI AGING FACIAL
-                    </button>
-                </a>
-            </div>
+    <div class="absolute inset-0">
+        @if(!empty($banner) && $banner instanceof \Illuminate\Support\Collection && $banner->count() > 0)
+            @foreach($banner as $index => $item)
+                <img src="{{ asset('storage/' . $item->image) }}"
+                     alt="Banner {{ $index + 1 }}"
+                     class="banner-img absolute inset-0 w-full h-full object-cover
+                            transition-opacity duration-1000 ease-in-out
+                            {{ $index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0' }}">
+            @endforeach
+        @else
+            <img src="{{ asset('images/default-banner.jpg') }}"
+                 class="absolute inset-0 w-full h-full object-cover opacity-100 z-10">
+        @endif
+    </div>
 
-                {{-- Kartu 3: HYDRA FACIAL --}}
-                <div class="treatment-card w-full md:w-1/3 text-center">
-                    <div class="rounded-lg overflow-hidden mb-4 shadow-md">
-                        <img 
-                            src="{{ asset('images/hydra.png') }}"
-                            alt="Hydra Facial" 
-                            class="w-full h-auto object-cover rounded-lg"
-                        >
-                    </div>
-                    <button 
-                        class="py-3 w-4/5 text-lg font-medium rounded-lg 
-                               transition duration-200 hover:opacity-90 
-                               active:translate-y-0.5 active:shadow-md uppercase" {{-- EFEK BARU DI SINI --}}
-                        style="background-color: #f3a8b4; color: white; border: none;"
-                    >
-                        HYDRA FACIAL
-                    </button>
-                </div>
-                
-            </div>
-        </div>
-    </section>
+    <div class="absolute inset-0 bg-black/40 z-20"></div>
 
-    {{-- 3. PROMO/PRICELIST SECTION --}}
-<section class="py-20 bg-[#FFCFCF] px-4 sm:px-6 lg:px-8"> 
-    <div class="max-w-7xl mx-auto text-center">
-        
-        {{-- KONTEN TEKS --}}
-        <p class="text-3xl font-semibold text-gray-800 mb-2">"Spook-tacular October Deals!"</p>
-        <p class="text-lg text-gray-700 mb-10 max-w-4xl mx-auto">
-            Bukan hanya make-up, tapi glowing natural skin yang bikin percaya diri. Nikmati promo khusus bulan Oktober hanya di ZA & Hi Beauty Care "
+    <div class="absolute inset-0 z-30 flex flex-col items-start justify-center px-6 md:px-20 text-left text-white">
+        <p class="mb-2 text-lg">Selamat datang di</p>
+
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">ZA & Hi Beauty Care</h1>
+
+        <p class="max-w-xl mb-6">
+            Salon kecantikan dengan konsep minimalis modern bernuansa pink yang dirancang untuk memberikan kenyamanan sekaligus pengalaman 
+            perawatan yang menyenangkan. Kami hadir sebagai tempat perawatan kecantikan yang menawarkan pelayanan lengkap 
+            mulai dari perawatan wajah, tubuh, rambut, hingga skincare, dengan kualitas terbaik dan harga yang bersahabat.
         </p>
-        
-        {{-- Kontainer Carousel --}}
-        <div class="relative flex items-center max-w-6xl mx-auto"> 
-            
-            {{-- Tombol Kiri (Prev) --}}
-            <button id="promoPrevBtn" class="p-2 text-gray-700 absolute left-0 z-20 bg-white rounded-full shadow-lg transition duration-200 hover:scale-110">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            
-            {{-- Kontainer Gambar Promo (HARDCODE 5 ITEM MANUAL) --}}
-            <div id="promoTrack" class="flex overflow-x-hidden snap-x snap-mandatory space-x-4 p-4 no-scrollbar w-full scroll-smooth">
-                
-                {{-- ITEM 1 --}}
-                {{-- GANTI promo_A.png dengan nama file Anda yang pertama --}}
-                <div class="promo-item flex-shrink-0 w-64 md:w-80 snap-center transition-all duration-300 transform" data-index="0">
-                    <img src="{{ asset('images/promo-1.png') }}" 
-                         alt="Promo 1: IPL Rejevu" 
-                         class="w-full h-full object-contain rounded-lg shadow-xl"
-                    >
-                </div>
+    </div>
 
-                {{-- ITEM 2 --}}
-                {{-- GANTI promo_B.png dengan nama file Anda yang kedua --}}
-                <div class="promo-item flex-shrink-0 w-64 md:w-80 snap-center transition-all duration-300 transform" data-index="1">
-                    <img src="{{ asset('images/promo-2.png') }}" 
-                         alt="Promo 2: Big Deal" 
-                         class="w-full h-full object-contain rounded-lg shadow-xl"
-                    >
-                </div>
+</section>
 
-                {{-- ITEM 3 --}}
-                {{-- GANTI promo_C.png dengan nama file Anda yang ketiga --}}
-                <div class="promo-item flex-shrink-0 w-64 md:w-80 snap-center transition-all duration-300 transform" data-index="2">
-                    <img src="{{ asset('images/promo-3.png') }}" 
-                         alt="Promo 3: Perawatan" 
-                         class="w-full h-full object-contain rounded-lg shadow-xl"
-                    >
-                </div>
+{{-- ========================================================= --}}
+{{-- FAVORITE TREATMENT --}}
+{{-- ========================================================= --}}
+<section class="py-16 px-4 sm:px-6 lg:px-8 bg-[#fce4e5] scroll-reveal">
+    <div class="max-w-7xl mx-auto">
 
-                {{-- ITEM 4 --}}
-                {{-- GANTI promo_D.png dengan nama file Anda yang keempat --}}
-                <div class="promo-item flex-shrink-0 w-64 md:w-80 snap-center transition-all duration-300 transform" data-index="3">
-                    <img src="{{ asset('images/promo-4.png') }}" 
-                         alt="Promo 4: Skin Booster" 
-                         class="w-full h-full object-contain rounded-lg shadow-xl"
-                    >
-                </div>
+        <h2 class="text-3xl font-bold mb-12 text-center text-gray-800">Favorite Treatment</h2>
 
-                {{-- ITEM 5 --}}
-                {{-- GANTI promo_E.png dengan nama file Anda yang kelima --}}
-                <div class="promo-item flex-shrink-0 w-64 md:w-80 snap-center transition-all duration-300 transform" data-index="4">
-                    <img src="{{ asset('images/promo-5.png') }}" 
-                         alt="Promo 5: Laser" 
-                         class="w-full h-full object-contain rounded-lg shadow-xl"
-                    >
+        <div class="flex flex-col md:flex-row justify-center gap-8">
+
+            @if(!empty($services) && $services->count() > 0)
+                @foreach($services as $service)
+                <div class="treatment-card w-full md:w-1/3 text-center scroll-reveal">
+                    <a href="{{ route('layanan.detail', $service->id) }}">
+                        <div class="rounded-lg overflow-hidden mb-4 shadow-md">
+                            <img src="{{ asset('storage/' . $service->image) }}"
+                                 alt="{{ $service->name }}"
+                                 class="w-full h-56 object-cover rounded-lg transition duration-300">
+                        </div>
+
+                        <button class="py-3 w-4/5 text-lg font-medium rounded-lg transition duration-200 hover:opacity-90 uppercase mx-auto block"
+                                style="background-color: #f3a8b4; color: white;">
+                            {{ strtoupper($service->name) }}
+                        </button>
+                    </a>
                 </div>
-                
-            </div>
-            
-            {{-- Tombol Kanan (Next) --}}
-            <button id="promoNextBtn" class="p-2 text-gray-700 absolute right-0 z-20 bg-white rounded-full shadow-lg transition duration-200 hover:scale-110">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-            
+                @endforeach
+            @else
+                <p class="text-center text-gray-600">Tidak ada treatment favorit tersedia saat ini.</p>
+            @endif
+
         </div>
+
     </div>
 </section>
 
-    {{-- 4. GALLERY SECTION --}}
-    <section class="py-16 bg-[#F7CFD8] px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-4 text-gray-800">Our Gallery</h2>
-            <p class="text-sm text-gray-600 mb-10 max-w-2xl mx-auto">
-                Discover the beauty of moments, through a spectacular collection of moments. Each picture reflects the journey of confidence, self-care, and timeless elegance. Click & explore our gallery!
-            </p>
-            <div class="relative flex items-center">
-                <button class="p-2 text-brand-text absolute left-0 z-10 bg-white rounded-full shadow-lg">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="flex overflow-x-scroll snap-x snap-mandatory space-x-6 p-4 no-scrollbar">
-                    <div class="flex-shrink-0 w-80 h-96 snap-center">
-                        <img src="{{ asset('images/gallery-1.png') }}" alt="Gallery 1" class="w-full h-full object-cover rounded-lg shadow-xl">
+{{-- ========================================================= --}}
+{{-- PROMO --}}
+{{-- ========================================================= --}}
+<section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#FFDBDF] to-[#FFCFCF] scroll-reveal">
+    <div class="max-w-7xl mx-auto text-center">
+
+        <h2 class="text-3xl font-bold text-gray-800 mb-3">
+            "{{ $promoDescription->title ?? 'Spook-tacular Deals!' }}"
+        </h2>
+
+        <p class="text-lg text-gray-700 max-w-4xl mx-auto mb-12">
+            {{ $promoDescription->description ?? 
+                'Bukan hanya make-up, tapi glowing natural skin yang bikin percaya diri. 
+                Nikmati promo khusus hanya di ZA & Hi Beauty Care' }}
+        </p>
+
+        <div class="relative max-w-6xl mx-auto flex items-center justify-center">
+
+            <button id="promoPrevBtn"
+                class="absolute left-0 z-[50] bg-white p-3 rounded-full shadow-lg hover:scale-110 transition">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div id="promoTrack"
+                class="flex overflow-x-auto no-scrollbar snap-x snap-mandatory w-full scroll-smooth px-6 py-4 space-x-8">
+
+                @if(!empty($promo) && $promo->count() > 0)
+                    @foreach($promo as $item)
+                        <div class="promo-card snap-center flex-shrink-0 w-[300px] h-[380px] scale-90 opacity-50 transition-all duration-300 rounded-xl shadow-xl bg-white overflow-hidden scroll-reveal">
+                            <img src="{{ asset('storage/' . $item->image) }}" class="w-full h-full object-cover">
+                        </div>
+                    @endforeach
+                @else
+                    <div class="promo-card snap-center flex-shrink-0 w-[300px] h-[380px] scale-110 opacity-100 rounded-xl shadow-xl bg-white scroll-reveal">
+                        <img src="{{ asset('images/default-promo.jpg') }}" class="w-full h-full object-cover">
                     </div>
-                    <div class="flex-shrink-0 w-80 h-96 snap-center">
-                        <img src="{{ asset('images/gallery-2.png') }}" alt="Gallery 2" class="w-full h-full object-cover rounded-lg shadow-xl">
-                    </div>
-                    <div class="flex-shrink-0 w-80 h-96 snap-center">
-                        <img src="{{ asset('images/gallery-3.png') }}" alt="Gallery 3" class="w-full h-full object-cover rounded-lg shadow-xl">
-                    </div>
-                    <div class="flex-shrink-0 w-80 h-96 snap-center">
-                        <img src="{{ asset('images/gallery-4.png') }}" alt="Gallery 4" class="w-full h-full object-cover rounded-lg shadow-xl">
-                    </div>
-                </div>
-                <button class="p-2 text-brand-text absolute right-0 z-10 bg-white rounded-full shadow-lg">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                @endif
+
             </div>
+
+            <button id="promoNextBtn"
+                class="absolute right-0 z-[50] bg-white p-3 rounded-full shadow-lg hover:scale-110 transition">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
         </div>
-    </section>
 
-    {{-- 5. CERTIFICATE SECTION & CTA --}}
-    <section class="py-16 bg-[#FFD5D5] px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-4 text-gray-800">Our Certificate</h2>
-            <p class="text-sm text-gray-600 mb-12 max-w-xl mx-auto">
-                A showcase of our achievements and commitment to excellence. Every certificate reflects our dedication to the highest professional practice, technology, and aesthetics.
-            </p>
-            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12">
-                <div class="w-52 md:w-64">
-                    <img src="{{ asset('images/cert-1.png') }}" alt="Certificate of Completion" class="w-full h-auto object-contain shadow-lg">
-                </div>
-                <div class="w-64 md:w-80 border-4 border-dark-pink p-2 bg-white shadow-2xl">
-                    <img src="{{ asset('images/cert-2.png') }}" alt="Sertifikat Keahlian" class="w-full h-auto object-contain">
-                </div>
-                <div class="w-52 md:w-64">
-                    <img src="{{ asset('images/cert-3.png') }}" alt="Certificate of Participant" class="w-full h-auto object-contain shadow-lg">
-                </div>
+    </div>
+</section>
+
+{{-- ========================================================= --}}
+{{-- GALLERY --}}
+{{-- ========================================================= --}}
+<section class="py-20 bg-[#F7CFD8] px-4 sm:px-6 lg:px-8 scroll-reveal">
+    <div class="max-w-7xl mx-auto text-center">
+
+        <h2 class="text-3xl font-bold mb-4 text-gray-800">Our Gallery</h2>
+
+        <p class="text-sm text-gray-600 mb-10 max-w-2xl mx-auto">
+            Discover the beauty of transformation through our collection of moments.
+            Each picture reflects the journey of confidence, self-care, and timeless elegance.
+            Click & explore our Gallery!
+        </p>
+
+        <div class="relative max-w-6xl mx-auto flex items-center justify-center">
+
+            <button id="galleryPrevBtn"
+                class="absolute left-0 z-[50] bg-white p-3 rounded-full shadow-lg hover:scale-110 transition">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div id="galleryTrack"
+                class="flex overflow-x-auto no-scrollbar snap-x snap-mandatory w-full scroll-smooth px-6 py-4 space-x-8">
+
+                @if(!empty($salon) && $salon->count() > 0)
+                    @foreach($salon as $item)
+                        <div class="gallery-card snap-center flex-shrink-0 w-[300px] h-[380px] scale-90 opacity-50 transition-all rounded-xl shadow-xl bg-white overflow-hidden scroll-reveal">
+                            <img src="{{ asset('storage/' . $item->image) }}" class="w-full h-full object-cover">
+                        </div>
+                    @endforeach
+                @else
+                    <div class="gallery-card snap-center flex-shrink-0 w-[300px] h-[380px] scale-110 opacity-100 rounded-xl shadow-xl bg-white scroll-reveal">
+                        <img src="{{ asset('images/default-gallery.jpg') }}" class="w-full h-full object-cover">
+                    </div>
+                @endif
+
             </div>
-            
-            <div class="max-w-7xl mx-auto text-center mt-12">
-                <a href="https://wa.me/yournumberphone" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-full shadow-xl transition duration-300 transform hover:scale-105">
-                    <i class="fab fa-whatsapp text-xl mr-2"></i>
-                    <span class="font-bold">Klaim Promo Sekarang</span>
-                </a>
-            </div>
+
+            <button id="galleryNextBtn"
+                class="absolute right-0 z-[50] bg-white p-3 rounded-full shadow-lg hover:scale-110 transition">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
         </div>
-    </section>
 
-   
+    </div>
+</section>
 
+{{-- ========================================================= --}}
+{{-- CERTIFICATE --}}
+{{-- ========================================================= --}}
+<section class="py-16 bg-[#FFD5D5] px-4 sm:px-6 lg:px-8 scroll-reveal">
+    <div class="max-w-7xl mx-auto text-center">
+
+        <h2 class="text-3xl font-bold mb-4 text-gray-800">Our Certificate</h2>
+
+        <p class="text-sm text-gray-600 mb-12 max-w-xl mx-auto">
+           A showcase of our achievements and commitment to excellence.
+           Every certificate reflects dedication, expertise, and continuous 
+           growth in dermatology and aesthetics.
+        </p>
+
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            @if(!empty($certificate) && $certificate->count() > 0)
+                @foreach($certificate as $item)
+                    <div class="w-64 md:w-80 cursor-pointer transition-transform hover:scale-105 scroll-reveal"
+                         onclick="openCertificateModal('{{ asset('storage/' . $item->image) }}')">
+                        <img src="{{ asset('storage/' . $item->image) }}"
+                             class="w-full h-full object-cover rounded-lg shadow-xl">
+                    </div>
+                @endforeach
+            @else
+                <p class="text-gray-600">Tidak ada sertifikat yang ditampilkan.</p>
+            @endif
+        </div>
+
+        <div class="text-center mt-12 scroll-reveal">
+            <a href="https://wa.me/089506143030" target="_blank"
+                class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-full shadow-xl transition hover:scale-105">
+                <i class="fab fa-whatsapp text-xl mr-2"></i>
+                <span class="font-bold">Klaim Promo Sekarang</span>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+{{-- CERTIFICATE MODAL --}}
+<div id="certificateModal"
+     class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-[9999]">
+
+    <div class="relative max-w-3xl max-h-[90vh] mx-auto">
+        <img id="modalCertificateImage" src=""
+             class="w-full h-full object-contain rounded-xl shadow-2xl">
+
+        <button onclick="closeCertificateModal()"
+                class="absolute -top-4 -right-4 bg-white text-black p-3 rounded-full shadow-xl hover:scale-110 transition">
+            ✕
+        </button>
+    </div>
+</div>
+
+{{-- ========================================================= --}}
+{{-- JAVASCRIPT --}}
+{{-- ========================================================= --}}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const promoTrack = document.getElementById('promoTrack');
-        const promoNextBtn = document.getElementById('promoNextBtn');
-        const promoPrevBtn = document.getElementById('promoPrevBtn');
-        const promoItems = document.querySelectorAll('.promo-item');
-        const totalItems = promoItems.length;
-        
-        if (totalItems === 0) return;
+document.addEventListener("DOMContentLoaded", function () {
 
-        let promoIndex = 0;
+    /* =============================== */
+    /* SCROLL REVEAL EFFECT */
+    /* =============================== */
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("revealed");
+            }
+        });
+    }, { threshold: 0.2 });
 
-        function updatePromoCarousel() {
-            // Ambil lebar item secara dinamis
-            const itemWidth = promoItems[0].offsetWidth; 
-            const gap = 16; // space-x-4
-            const offset = itemWidth + gap;
+    document.querySelectorAll(".scroll-reveal").forEach(el => observer.observe(el));
 
-            // 1. Mengelola Pergeseran Posisi Horizontal (Smooth Scroll)
-            promoTrack.scrollLeft = promoIndex * offset; 
-            
-            // 2. Mengelola Efek Besar-Kecil (Scaling)
-            promoItems.forEach((item, index) => {
-                // Hapus kelas besar (scaling)
-                item.classList.remove('scale-110', 'z-20', 'shadow-2xl');
-                item.classList.add('shadow-xl'); 
+    /* BANNER ROTATOR */
+    (function bannerRotator() {
+        const images = document.querySelectorAll(".banner-img");
+        if (!images.length) return;
+        let index = 0;
+        setInterval(() => {
+            images[index].classList.remove("opacity-100", "z-10");
+            images[index].classList.add("opacity-0", "z-0");
+            index = (index + 1) % images.length;
+            images[index].classList.remove("opacity-0", "z-0");
+            images[index].classList.add("opacity-100", "z-10");
+        }, 4500);
+    })();
 
-                if (index === promoIndex) {
-                    // Tambahkan kelas besar ke item yang aktif
-                    item.classList.add('scale-110', 'z-20', 'shadow-2xl');
-                    item.classList.remove('shadow-xl');
-                }
+
+    /* CENTER HELPER */
+    function centerScroll(track, items, index) {
+        if (!items.length) return;
+        const gap = 32;
+        const cardWidth = items[index].offsetWidth;
+        const left = (cardWidth + gap) * index - track.offsetWidth / 2 + cardWidth / 2;
+        track.scrollTo({ left: Math.max(0, left), behavior: "smooth" });
+    }
+
+    /* PROMO CAROUSEL */
+    (function promoCarousel() {
+        const track = document.getElementById('promoTrack');
+        if (!track) return;
+        const items = track.querySelectorAll('.promo-card');
+        const prev = document.getElementById('promoPrevBtn');
+        const next = document.getElementById('promoNextBtn');
+
+        let index = 0;
+
+        function update() {
+            items.forEach((item, i) => {
+                item.classList.toggle('scale-110', i === index);
+                item.classList.toggle('opacity-100', i === index);
+                item.classList.toggle('scale-90', i !== index);
+                item.classList.toggle('opacity-50', i !== index);
             });
+            centerScroll(track, items, index);
         }
 
-        // Handler Next (>)
-        promoNextBtn.addEventListener('click', () => {
-            promoIndex = (promoIndex + 1) % totalItems;
-            updatePromoCarousel();
+        next.addEventListener('click', () => {
+            index = (index + 1) % items.length;
+            update();
         });
 
-        // Handler Prev (<)
-        promoPrevBtn.addEventListener('click', () => {
-            promoIndex = (promoIndex - 1 + totalItems) % totalItems;
-            updatePromoCarousel();
+        prev.addEventListener('click', () => {
+            index = (index - 1 + items.length) % items.length;
+            update();
         });
 
-        // Inisialisasi: Item pertama diatur menjadi besar dan scroll
-        setTimeout(() => {
-            updatePromoCarousel();
-        }, 50); 
-    });
+        update();
+    })();
+
+    /* GALLERY CAROUSEL */
+    (function galleryCarousel() {
+        const track = document.getElementById('galleryTrack');
+        if (!track) return;
+        const items = track.querySelectorAll('.gallery-card');
+        const prev = document.getElementById('galleryPrevBtn');
+        const next = document.getElementById('galleryNextBtn');
+
+        let index = 0;
+
+        function update() {
+            items.forEach((item, i) => {
+                item.classList.toggle('scale-110', i === index);
+                item.classList.toggle('opacity-100', i === index);
+                item.classList.toggle('scale-90', i !== index);
+                item.classList.toggle('opacity-50', i !== index);
+            });
+            centerScroll(track, items, index);
+        }
+
+        next.addEventListener('click', () => {
+            index = (index + 1) % items.length;
+            update();
+        });
+
+        prev.addEventListener('click', () => {
+            index = (index - 1 + items.length) % items.length;
+            update();
+        });
+
+        update();
+    })();
+
+    /* CERTIFICATE MODAL */
+    window.openCertificateModal = function(url) {
+        const modal = document.getElementById('certificateModal');
+        document.getElementById('modalCertificateImage').src = url;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+
+    window.closeCertificateModal = function() {
+        const modal = document.getElementById('certificateModal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+
+});
 </script>
-    
-    @include('layouts.footer')
+
+@include('layouts.footer')
 
 @endsection

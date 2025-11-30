@@ -1,102 +1,124 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Pricelist; // Pastikan ini ada
-use App\Http\Controllers\TreatmentController;
+use Illuminate\Support\Facades\Auth;
+
+// ==============================
+// CONTROLLER AUTH
+// ==============================
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+
+// ==============================
+// CONTROLLER USER
+// ==============================
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\ProductPageController;
+use App\Http\Controllers\ServicePageController;
+use App\Http\Controllers\TestimoniPageController;
+use App\Http\Controllers\HomepageController;
+
+// ==============================
+// CONTROLLER ADMIN
+// ==============================
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| HOMEPAGE
+|--------------------------------------------------------------------------
+*/
+Route::get('/', [HomepageController::class, 'index'])->name('homepage');
+
+/*
+|--------------------------------------------------------------------------
+| PRODUK
+|--------------------------------------------------------------------------
+*/
+Route::get('/product', [ProductPageController::class, 'index'])->name('product.index');
+Route::get('/product/{id}', [ProductPageController::class, 'detail'])->name('product.detail');
+
+
+/*
+|--------------------------------------------------------------------------
+| LAYANAN
 |--------------------------------------------------------------------------
 */
 
-// Rute 1: Halaman Utama (Home)
-// Mengambil data Pricelist dan mengirimkannya ke homepage.blade.php
-Route::get('/', function () {
-    $pricelists = Pricelist::all();
-    return view('homepage', compact('pricelists'));
+Route::get('/layanan', [ServicePageController::class, 'index'])->name('layanan.index');
+Route::get('/layanan/kategori/{kategori}', [ServicePageController::class, 'kategori'])->name('layanan.kategori');
+Route::get('/layanan/detail/{id}', [ServicePageController::class, 'detail'])->name('layanan.detail');
+
+
+/*
+|--------------------------------------------------------------------------
+| TESTIMONI
+|--------------------------------------------------------------------------
+*/
+Route::get('/testimoni', [TestimoniPageController::class, 'index'])->name('testimoni.index');
+Route::get('/testimoni/create', [TestimoniPageController::class, 'create'])->name('testimoni.create');
+Route::post('/testimoni', [TestimoniPageController::class, 'store'])->name('testimoni.store');
+
+
+/*
+|--------------------------------------------------------------------------
+| KONSULTASI
+|--------------------------------------------------------------------------
+*/
+Route::get('/consultation', function () {return view('consultation.consultation');})->name('consultation');
+Route::get('/chatbot', function () {return view('consultation.chatbot');})->name('chatbot');
+
+
+/*
+|-------------------------------------------------------------------------- 
+| AUTH (REGISTER, LOGIN, LOGOUT)
+|-------------------------------------------------------------------------- 
+*/
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
+
+/*
+|--------------------------------------------------------------------------
+| PROFIL USER (WAJIB LOGIN)
+|--------------------------------------------------------------------------
+*/
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index');
+    Route::get('/profil/edit', [ProfilController::class, 'edit'])->name('profil.edit');
+    Route::put('/profil/update', [ProfilController::class, 'update'])->name('profil.update');
 });
 
-// Rute 2: Halaman Pendaftaran (Register)
-// Menampilkan halaman register.blade.php
-Route::get('/register', function () {
-    return view('register');
+
+/*
+|--------------------------------------------------------------------------
+| ADMIN PANEL
+|--------------------------------------------------------------------------
+*/
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware(['auth', 'admin'])
+    ->group(function () {
+
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        Route::resource('products', ProductController::class);
+        Route::resource('services', ServiceController::class);
+        Route::resource('testimonials', TestimonialController::class);
+        Route::resource('users', UserController::class);
+        Route::resource('gallery', GalleryController::class);
+    });
+
+    Route::fallback(function () {
+    return redirect('/login');
 });
-
-// Rute 3: Halaman Login
-Route::get('/login', function () {
-    return view('login');
-});
-
-// Rute 4: Halaman Profil Pengguna
-Route::get('/profile', function () {
-    // Di sini nanti ada logika untuk memastikan user sudah login
-    return view('profile'); 
-});
-
-// Rute GET: Menampilkan formulir pendaftaran
-Route::get('/register', function () {
-    return view('register');
-});
-
-// Rute POST: Menerima data yang dikirim dari formulir
-Route::post('/register', [App\Http\Controllers\AuthController::class, 'register']);
-
-// Rute 5: Halaman Produk
-Route::get('/product', function () {
-    return view('product');
-});
-
-// Rute 6: Halaman Testimoni
-Route::get('/testimoni', function () {
-    return view('testimoni');
-});
-
-// Rute 7: Halaman Layanan
-Route::get('/layanan', function () {
-    return view('layanan');
-});
-
-// Rute yang benar (mencari facialdetail)
-Route::get('/layanan/facial', function () {
-    return view('facialdetail');
-});
-
-// Rute 9: Halaman Detail Body Treatment
-Route::get('/layanan/body', function () {
-    return view('bodydetail');
-});
-
-// Rute 10: Halaman Detail Hair Treatment
-Route::get('/layanan/hair', function () {
-    return view('hairdetail');
-});
-
-// Rute 11: Halaman Detail Treatment Universal
-// {treatmentName} adalah parameter yang akan diambil oleh Controller
-Route::get('/treatment/{treatmentName}', function ($treatmentName) {
-    // Di sini nanti kita akan panggil Controller untuk ambil data treatment
-    return view('treatmentdetail', compact('treatmentName')); 
-});
-
-// Route untuk Halaman Konsultasi
-Route::get('/consultasi', function () {
-    return view('consultation'); // Memanggil file consultation.blade.php
-});
-
-// Route untuk Halaman Chatbot
-Route::get('/chatbot', function () {
-    return view('chatbot');
-});
-
-// Rute untuk menampilkan formulir tambah testimoni
-Route::get('/testimoni/create', function () {
-    return view('create_testimoni');
-});
-
-// Route POST untuk memproses dan menyimpan data testimoni
-Route::post('/testimoni', [App\Http\Controllers\ReviewController::class, 'store']);
-
-// Rute untuk menampilkan halaman detail treatment
-Route::get('/treatment/{slug}', [TreatmentController::class, 'show'])->name('treatment.show');
-
