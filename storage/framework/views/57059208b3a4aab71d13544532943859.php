@@ -48,10 +48,9 @@
 
     
     <div class="max-w-4xl mx-auto flex items-center gap-4 mb-6 mt-4">
-        <a href="/layanan.kategori"
-            class="inline-flex items-center text-gray-700 hover:text-gray-900 mb-6
-            px-4 py-2 rounded-full shadow-md bg-white hover:shadow-xl transition transform hover:scale-105">
-               <i class="fas fa-arrow-left fa-lg mr-2"></i> Back
+        <a href="<?php echo e(url()->previous()); ?>"
+           class="back-btn text-pink-700 text-xl font-bold hover:text-pink-900">
+            ← Back
         </a>
     </div>
 
@@ -90,7 +89,7 @@
 
     
     <div class="text-center mt-10">
-        <a href="https://wa.me/628xxxxxxxxxx?text=Halo,%20saya%20ingin%20booking%20<?php echo e(urlencode($service->name)); ?>"
+        <a href="https://wa.me/6289506143030?text=Halo,%20saya%20ingin%20booking%20<?php echo e(urlencode($service->name)); ?>"
            class="flex items-center justify-center gap-2 px-6 py-3 bg-green-500 text-white font-bold rounded-full shadow-lg text-lg w-max mx-auto hover:bg-green-600 transition">
             Booking Via Whatsapp
         </a>

@@ -88,7 +88,7 @@
 
     {{-- ====== BUTTON WHATSAPP ====== --}}
     <div class="text-center mt-10">
-        <a href="https://wa.me/628xxxxxxxxxx?text=Halo,%20saya%20ingin%20booking%20{{ urlencode($service->name) }}"
+        <a href="https://wa.me/6289506143030?text=Halo,%20saya%20ingin%20booking%20{{ urlencode($service->name) }}"
            class="flex items-center justify-center gap-2 px-6 py-3 bg-green-500 text-white font-bold rounded-full shadow-lg text-lg w-max mx-auto hover:bg-green-600 transition">
             Booking Via Whatsapp
         </a>

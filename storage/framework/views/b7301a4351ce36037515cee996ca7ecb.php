@@ -11,7 +11,6 @@
         <?php
             $usersData = $comparison['users'] ?? ['change' => 0, 'direction' => 'flat'];
             $usersColor = $usersData['direction'] === 'up' ? 'text-green-600' : ($usersData['direction'] === 'down' ? 'text-red-600' : 'text-gray-500');
-            $usersArrow = $usersData['direction'] === 'up' ? 'fas fa-arrow-up' : ($usersData['direction'] === 'down' ? 'fas fa-arrow-down' : 'fas fa-minus');
             $usersChange = number_format(abs($usersData['change']), 2);
         ?>
         <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 
@@ -22,9 +21,6 @@
             </div>
             <div class="mt-3 text-4xl font-extrabold text-gray-900"><?php echo e(number_format($stats['users'] ?? 0)); ?></div>
             <div class="text-xs mt-2 font-semibold">
-                <span class="<?php echo e($usersColor); ?>">
-                    <i class="<?php echo e($usersArrow); ?>"></i> <?php echo e($usersChange); ?>% since last week
-                </span>
             </div>
         </div>
 
@@ -32,7 +28,6 @@
         <?php
             $productsData = $comparison['products'] ?? ['change' => 0, 'direction' => 'flat'];
             $productsColor = $productsData['direction'] === 'up' ? 'text-green-600' : ($productsData['direction'] === 'down' ? 'text-red-600' : 'text-gray-500');
-            $productsArrow = $productsData['direction'] === 'up' ? 'fas fa-arrow-up' : ($productsData['direction'] === 'down' ? 'fas fa-arrow-down' : 'fas fa-minus');
             $productsChange = number_format(abs($productsData['change']), 2);
         ?>
         <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 
@@ -43,9 +38,6 @@
             </div>
             <div class="mt-3 text-4xl font-extrabold text-gray-900"><?php echo e(number_format($stats['products'] ?? 0)); ?></div>
             <div class="text-xs mt-2 font-semibold">
-                <span class="<?php echo e($productsColor); ?>">
-                    <i class="<?php echo e($productsArrow); ?>"></i> <?php echo e($productsChange); ?>% since last week
-                </span>
             </div>
         </div>
 
@@ -53,7 +45,6 @@
         <?php
             $servicesData = $comparison['services'] ?? ['change' => 0, 'direction' => 'flat'];
             $servicesColor = $servicesData['direction'] === 'up' ? 'text-green-600' : ($servicesData['direction'] === 'down' ? 'text-red-600' : 'text-gray-500');
-            $servicesArrow = $servicesData['direction'] === 'up' ? 'fas fa-arrow-up' : ($servicesData['direction'] === 'down' ? 'fas fa-arrow-down' : 'fas fa-minus');
             $servicesChange = number_format(abs($servicesData['change']), 2);
         ?>
         <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 
@@ -64,9 +55,6 @@
             </div>
             <div class="mt-3 text-4xl font-extrabold text-gray-900"><?php echo e(number_format($stats['services'] ?? 0)); ?></div>
             <div class="text-xs mt-2 font-semibold">
-                <span class="<?php echo e($servicesColor); ?>">
-                    <i class="<?php echo e($servicesArrow); ?>"></i> <?php echo e($servicesChange); ?>% since last week
-                </span>
             </div>
         </div>
 
@@ -74,7 +62,6 @@
         <?php
             $testimonialsData = $comparison['testimonials'] ?? ['change' => 0, 'direction' => 'flat'];
             $testimonialsColor = $testimonialsData['direction'] === 'up' ? 'text-green-600' : ($testimonialsData['direction'] === 'down' ? 'text-red-600' : 'text-gray-500');
-            $testimonialsArrow = $testimonialsData['direction'] === 'up' ? 'fas fa-arrow-up' : ($testimonialsData['direction'] === 'down' ? 'fas fa-arrow-down' : 'fas fa-minus');
             $testimonialsChange = number_format(abs($testimonialsData['change']), 2);
         ?>
         <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 
@@ -85,9 +72,6 @@
             </div>
             <div class="mt-3 text-4xl font-extrabold text-gray-900"><?php echo e(number_format($stats['testimonials'] ?? 0)); ?></div>
             <div class="text-xs mt-2 font-semibold">
-                <span class="<?php echo e($testimonialsColor); ?>">
-                    <i class="<?php echo e($testimonialsArrow); ?>"></i> <?php echo e($testimonialsChange); ?>% since last week
-                </span>
             </div>
         </div>
     </div>

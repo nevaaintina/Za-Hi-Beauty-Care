@@ -22,12 +22,11 @@
 </style>
 
 {{-- ========================================================= --}}
-{{-- HERO PRODUK (GAMBAR DARI GALLERY + FADE AUTO) --}}
+{{-- HERO PRODUK --}}
 {{-- ========================================================= --}}
 
 <section class="relative w-full h-[300px] md:h-[450px] overflow-hidden scroll-reveal">
 
-    {{-- IMAGE BACKGROUND --}}
     <div class="absolute inset-0 hero-slider">
 
         @forelse($galery as $index => $item)
@@ -36,17 +35,14 @@
                         transition-opacity duration-1000 ease-in-out
                         {{ $index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0' }}">
         @empty
-            {{-- FALLBACK JIKA GALERY KOSONG --}}
             <img src="{{ asset('images/produk.jpg') }}"
                  class="absolute inset-0 w-full h-full object-cover opacity-100 z-10">
         @endforelse
 
     </div>
 
-    {{-- OVERLAY --}}
     <div class="absolute inset-0 bg-black/40 z-20"></div>
 
-    {{-- TEXT --}}
     <div class="absolute inset-0 z-30 flex flex-col items-center justify-center text-center">
         <h1 class="text-5xl md:text-5xl font-extrabold text-white mb-2 tracking-wider">
             ZA & Hi Beauty Care
@@ -65,20 +61,37 @@
 <section class="py-16 px-4 sm:px-6 lg:px-8" style="background-color: #fcebeb;">
     <div class="max-w-7xl mx-auto">
 
+    {{-- DESKRIPSI PRODUK --}}
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-xl font-bold text-gray-800 mb-3" style="color: #ee668dff">
+                Produk Skincare Terbaik untuk Perawatan Kulit Anda
+            </h2>
+            <p class="text-gray-600 text-lg text-sm">
+                Temukan berbagai produk skincare premium dari ZA & Hi Beauty Care 
+                yang diformulasikan untuk merawat, menutrisi, dan menjaga kesehatan kulit Anda.
+                Cocok untuk semua jenis kulit dan aman digunakan setiap hari.
+            </p>
+        </div>
+
         @if($products->count() == 0)
             <p class="text-center text-gray-600 text-lg">Belum ada produk.</p>
         @else
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        {{-- GRID PRODUK LEBIH KE TENGAH --}}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 
+                    max-w-5xl mx-auto px-4">
+
 
             @foreach ($products as $p)
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-pink-100 
-                            hover:shadow-xl transition duration-300 fade-item hover-pop">
+                <div class="bg-white rounded-lg shadow-lg border border-pink-100 
+                            hover:shadow-xl transition duration-300 fade-item hover-pop 
+                            flex flex-col items-center">
 
                     {{-- GAMBAR PRODUK --}}
                     <img 
                         src="{{ $p->image ? asset('storage/'.$p->image) : asset('images/no-image.png') }}" 
                         alt="{{ $p->name }}" 
-                        class="w-full h-full object-cover"
+                        class="w-full object-contain "
                     >
 
                 </div>

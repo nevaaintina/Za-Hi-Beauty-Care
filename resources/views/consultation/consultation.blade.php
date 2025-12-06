@@ -32,7 +32,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
 
             {{-- WhatsApp --}}
-            <a href="https://wa.me/yourphonenumber" target="_blank"
+            <a href="https://wa.me/6289506143030?text=Halo,%20saya%20ingin%20konsultasi%20" target="_blank"
                class="block p-6 rounded-xl shadow-xl transition duration-300 transform hover:scale-105"
                style="background-color: #E195AB;">
                 <i class="fab fa-whatsapp text-4xl text-white mb-4"></i>
@@ -42,14 +42,14 @@
                 </p>
             </a>
 
-            {{-- Chatbot --}}
-            <a href="/chatbot"
+            {{-- Chat --}}
+            <a href="/chat"
                class="block p-6 rounded-xl shadow-xl transition duration-300 transform hover:scale-105"
                style="background-color: #F8B5C5;">
-                <i class="fas fa-robot text-4xl text-white mb-4"></i>
-                <p class="text-xl font-bold text-white mb-2">Mulai Chat</p>
+                <i class="fas fa-comments text-4xl text-white mb-4"></i>
+                <p class="text-xl font-bold text-white mb-2">Mulai Diskusi</p>
                 <p class="text-sm text-white">
-                    Dapatkan jawaban cepat 24/7 dari AI Chat Bot kami.
+                    Ayo diskusi bersama di forum kami.
                 </p>
             </a>
 

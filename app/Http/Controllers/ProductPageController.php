@@ -7,9 +7,7 @@ use App\Models\Gallery;
 
 class ProductPageController extends Controller
 {
-    /**
-     * Halaman utama produk (/produk)
-     */
+
     public function index()
     {
         return view('product.product', [
@@ -22,9 +20,6 @@ class ProductPageController extends Controller
         ]);
     }
 
-    /**
-     * Halaman detail produk (/produk/{id})
-     */
     public function detail($id)
     {
         return view('product.product-detail', [

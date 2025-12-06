@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
-    // INDEX + SEARCH
+
     public function index(Request $request)
     {
         $search = $request->search;

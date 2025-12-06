@@ -9,7 +9,10 @@
     <?php echo csrf_field(); ?>
     <?php echo method_field('PUT'); ?>
     <?php echo $__env->make('admin.gallery._form', ['item' => $gallery], array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-        <button class="mt-4 bg-dark-pink text-white px-4 py-2 rounded">Update</button>
+        <div class="mt-4">
+        <button class="bg-dark-pink text-white px-4 py-2 rounded">Update</button>
+        <a href="<?php echo e(route('admin.gallery.index')); ?>" class="ml-2 text-gray-600">Cancel</a>
+    </div>
     </form>
 </div>
 

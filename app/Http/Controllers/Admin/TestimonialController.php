@@ -8,6 +8,7 @@ use App\Models\Testimonial;
 
 class TestimonialController extends Controller
 {
+    
     public function index(Request $request)
     {
         $search = $request->search;

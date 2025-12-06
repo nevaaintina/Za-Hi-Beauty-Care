@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    /** Tampil semua data user + fitur search */
+
     public function index(Request $request)
     {
         $search = $request->search;
@@ -27,13 +27,11 @@ class UserController extends Controller
         return view('admin.users.index', compact('items'));
     }
 
-    /** Form tambah user */
     public function create()
     {
         return view('admin.users.create', ['user' => new User()]);
     }
 
-    /** Simpan user baru */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -58,13 +56,11 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')->with('success', 'User berhasil ditambahkan.');
     }
 
-    /** Form edit user */
     public function edit(User $user)
     {
         return view('admin.users.edit', compact('user'));
     }
 
-    /** 🔄 Update data user */
     public function update(Request $request, User $user)
     {
         $validated = $request->validate([
@@ -99,7 +95,6 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')->with('success', 'User berhasil diperbarui.');
     }
 
-    /** Hapus user */
     public function destroy(User $user)
     {
         // Hapus foto storage juga

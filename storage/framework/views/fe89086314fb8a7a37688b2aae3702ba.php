@@ -22,8 +22,7 @@
 
 
 
-<section class="relative w-full h-[300px] md:h-[450px] overflow-hidden scroll-reveal">
-
+<section class="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden h-[550px] md:h-[650px]"
     <div class="absolute inset-0">
         <?php if(!empty($banner) && $banner instanceof \Illuminate\Support\Collection && $banner->count() > 0): ?>
             <?php $__currentLoopData = $banner; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -41,16 +40,21 @@
 
     <div class="absolute inset-0 bg-black/40 z-20"></div>
 
-    <div class="absolute inset-0 z-30 flex flex-col items-start justify-center px-6 md:px-20 text-left text-white">
-        <p class="mb-2 text-lg">Selamat datang di</p>
+<div class="absolute inset-0 z-30 flex flex-col items-start justify-center px-6 md:px-20 text-left text-white">
+    
+    
+    <p class="mb-2 text-lg drop-shadow-md" style="color: #E195AB;">Selamat datang di</p>
 
-        <h1 class="text-3xl md:text-5xl font-bold mb-4">ZA & Hi Beauty Care</h1>
+    
+    <h1 class="font-elegant text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg" style="color: #E195AB;">ZA & Hi Beauty Care</h1>
 
-        <p class="max-w-xl mb-6">
-            Salon kecantikan dengan konsep minimalis modern bernuansa pink yang dirancang untuk memberikan kenyamanan sekaligus pengalaman 
-            perawatan yang menyenangkan. Kami hadir sebagai tempat perawatan kecantikan yang menawarkan pelayanan lengkap 
-            mulai dari perawatan wajah, tubuh, rambut, hingga skincare, dengan kualitas terbaik dan harga yang bersahabat.
-        </p>
+    
+    <p class="max-w-xl text-lg leading-relaxed mb-8 drop-shadow-lg" style="color: #f9dce4ff;">
+        Salon kecantikan dengan konsep minimalis modern bernuansa pink yang dirancang untuk memberikan kenyamanan sekaligus pengalaman 
+        perawatan yang menyenangkan. Kami hadir sebagai tempat perawatan kecantikan yang menawarkan pelayanan lengkap 
+        mulai dari perawatan wajah, tubuh, rambut, hingga skincare, dengan kualitas terbaik dan harga yang bersahabat.
+    </p>
+    
     </div>
 
 </section>
@@ -220,7 +224,7 @@
         </div>
 
         <div class="text-center mt-12 scroll-reveal">
-            <a href="https://wa.me/089506143030" target="_blank"
+            <a href="https://wa.me/6289506143030?text=Halo,%20saya%20ingin%20liat%20promonya" target="_blank"
                 class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-full shadow-xl transition hover:scale-105">
                 <i class="fab fa-whatsapp text-xl mr-2"></i>
                 <span class="font-bold">Klaim Promo Sekarang</span>
@@ -370,6 +374,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+
+<section class="w-full bg-white p-0 m-0">
+    <div class="w-full h-[350px] md:h-[450px] lg:h-[500px]">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.447784358085!2d107.01926597453094!3d-6.204511960777575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6989006ec7a9dd%3A0x2befda7438410b57!2sZA%26HI%20Beauty%20Care!5e0!3m2!1sid!2sid!4v1764682550283!5m2!1sid!2sid"
+            class="w-full h-full border-0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</section>
+
+
+
 
 <?php echo $__env->make('layouts.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 

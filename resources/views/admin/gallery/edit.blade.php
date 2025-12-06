@@ -9,7 +9,10 @@
     @csrf
     @method('PUT')
     @include('admin.gallery._form', ['item' => $gallery])
-        <button class="mt-4 bg-dark-pink text-white px-4 py-2 rounded">Update</button>
+        <div class="mt-4">
+        <button class="bg-dark-pink text-white px-4 py-2 rounded">Update</button>
+        <a href="{{ route('admin.gallery.index') }}" class="ml-2 text-gray-600">Cancel</a>
+    </div>
     </form>
 </div>
 

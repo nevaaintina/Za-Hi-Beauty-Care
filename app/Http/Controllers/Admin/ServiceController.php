@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
+    
     public function index()
     {
         $items = Service::latest()->paginate(15);

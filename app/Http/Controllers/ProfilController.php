@@ -8,20 +8,18 @@ use Illuminate\Support\Facades\Storage;
 
 class ProfilController extends Controller
 {
-    /** Tampilkan profil user */
+
     public function index()
     {
         $user = Auth::user();
         return view('profil.index', compact('user'));
     }
 
-    /** Form edit profil */
     public function edit()
     {
         return view('profil.edit', ['user' => auth()->user()]);
     }
 
-    /** Update profil */
     public function update(Request $request)
     {
         $user = auth()->user();

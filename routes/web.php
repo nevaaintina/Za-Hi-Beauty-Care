@@ -3,29 +3,37 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-// ==============================
-// CONTROLLER AUTH
-// ==============================
+/*
+|--------------------------------------------------------------------------
+| CONTROLLER AUTH
+|--------------------------------------------------------------------------
+*/
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 
-// ==============================
-// CONTROLLER USER
-// ==============================
+/*
+|--------------------------------------------------------------------------
+| CONTROLLER USER
+|--------------------------------------------------------------------------
+*/
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProductPageController;
 use App\Http\Controllers\ServicePageController;
 use App\Http\Controllers\TestimoniPageController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\ChatPageController;
 
-// ==============================
-// CONTROLLER ADMIN
-// ==============================
+/*
+|--------------------------------------------------------------------------
+| CONTROLLER ADMIN
+|--------------------------------------------------------------------------
+*/
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\AdminChatController;
 use App\Http\Controllers\Admin\DashboardController;
 
 
@@ -35,6 +43,7 @@ use App\Http\Controllers\Admin\DashboardController;
 |--------------------------------------------------------------------------
 */
 Route::get('/', [HomepageController::class, 'index'])->name('homepage');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +59,6 @@ Route::get('/product/{id}', [ProductPageController::class, 'detail'])->name('pro
 | LAYANAN
 |--------------------------------------------------------------------------
 */
-
 Route::get('/layanan', [ServicePageController::class, 'index'])->name('layanan.index');
 Route::get('/layanan/kategori/{kategori}', [ServicePageController::class, 'kategori'])->name('layanan.kategori');
 Route::get('/layanan/detail/{id}', [ServicePageController::class, 'detail'])->name('layanan.detail');
@@ -68,17 +76,19 @@ Route::post('/testimoni', [TestimoniPageController::class, 'store'])->name('test
 
 /*
 |--------------------------------------------------------------------------
-| KONSULTASI
+| KONSULTASI & CHAT (UMUM)
 |--------------------------------------------------------------------------
 */
 Route::get('/consultation', function () {return view('consultation.consultation');})->name('consultation');
-Route::get('/chatbot', function () {return view('consultation.chatbot');})->name('chatbot');
+Route::get('/chat', [ChatPageController::class, 'index'])->name('chat.index');
+Route::post('/chat/send', [ChatPageController::class, 'send'])->name('chat.send');
+Route::delete('/chat/{id}/delete', [ChatPageController::class, 'delete'])->name('chat.delete');
 
 
 /*
-|-------------------------------------------------------------------------- 
-| AUTH (REGISTER, LOGIN, LOGOUT)
-|-------------------------------------------------------------------------- 
+|--------------------------------------------------------------------------
+| AUTH
+|--------------------------------------------------------------------------
 */
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
@@ -117,8 +127,15 @@ Route::prefix('admin')
         Route::resource('testimonials', TestimonialController::class);
         Route::resource('users', UserController::class);
         Route::resource('gallery', GalleryController::class);
+        Route::resource('chats', AdminChatController::class);
+
     });
 
-    Route::fallback(function () {
+/*
+|--------------------------------------------------------------------------
+| FALLBACK
+|--------------------------------------------------------------------------
+*/
+Route::fallback(function () {
     return redirect('/login');
 });

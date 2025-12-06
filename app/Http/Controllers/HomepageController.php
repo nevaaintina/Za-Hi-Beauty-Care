@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class HomepageController extends Controller
 {
+    
     public function index()
     {
         // Ambil user login (bisa null)
@@ -21,10 +22,8 @@ class HomepageController extends Controller
             'aset'
         ])->get();
 
-        // ===========================
+
         //  KATEGORI GALERI
-        // ===========================
-        
         // PROMO — category = promo
         $promo = $galleries
             ->where('category', 'promo')
@@ -46,15 +45,12 @@ class HomepageController extends Controller
             ->where('description', 'banner')
             ->values();
 
-        // ===========================
+
         //  FAVORITE SERVICES
-        // ===========================
         // Ambil 3 layanan saja
         $services = Service::limit(3)->get();
 
-        // ===========================
         //  RETURN KE VIEW
-        // ===========================
         return view('homepage', [
             'user'        => $user,
             'services'    => $services,

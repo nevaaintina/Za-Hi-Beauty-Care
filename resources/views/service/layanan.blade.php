@@ -77,7 +77,7 @@
 
     {{-- ======================= BUTTON WA ======================= --}}
     <div class="text-center mt-12 mb-16">
-        <a href="https://wa.me/628xxxxxxxxxx"
+        <a href="https://wa.me/6289506143030?text=Halo,%20saya%20ingin%20booking%20"
            class="py-3 px-7 bg-green-500 text-white font-bold rounded-full shadow-lg hover:bg-green-600 transition">
             Booking Via Whatsapp
         </a>

@@ -1,65 +1,48 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZaHi Bot - Chat</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <style>
-        /* Warna kustom */
-        .bg-pink-brand { background-color: #E195AB; }
-        .bg-pink-light { background-color: #FFE2E2; }
+<?php $__env->startSection('title', 'Chatbot - ZA & Hi'); ?>
+
+<?php $__env->startSection('content'); ?>
+<?php echo $__env->make('layouts.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+
+<section class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 relative" style="background-color:#FFE2E2;">
+    <div class="max-w-3xl mx-auto flex flex-col h-[80vh] bg-white rounded-2xl shadow-xl overflow-hidden">
+
         
-        /* Menggunakan gambar background dari konsultasi */
-        .chat-bg {
-            background-image: url('<?php echo e(asset('images/watercolor-bg.png')); ?>'); 
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
-</head>
-<body class="min-h-screen flex flex-col font-sans text-gray-800">
+        <header class="bg-pink-300 text-white px-6 py-4 flex items-center gap-3 shadow-md">
+            <a href="/konsultasi" class="text-white hover:text-gray-100">
+                <i class="fas fa-arrow-left text-lg"></i>
+            </a>
+            <h1 class="text-xl font-bold flex items-center gap-2">
+                <i class="fas fa-robot text-white text-2xl"></i> ZAHi Chatbot
+            </h1>
+        </header>
 
-    <header class="bg-pink-brand text-white py-3 px-4 flex items-center shadow-md">
-        <a href="/consultasi" class="mr-4">
-            <i class="fas fa-arrow-left fa-lg"></i>
-        </a>
-        <div class="flex items-center space-x-3">
-            <i class="fas fa-robot text-xl"></i>
-            <h1 class="text-xl font-bold">ZaHi Bot</h1>
-        </div>
-    </header>
-
-   <main class="flex-grow p-4 chat-bg relative">
         
-        <div class="flex justify-start mb-4">
-            <div class="bg-white p-3 rounded-xl max-w-xs shadow">
-                <p class="text-gray-700">Halo, saya ZaHi Bot</p>
-            </div>
-        </div>
+        <main id="chat-container" class="flex-grow p-4 overflow-y-auto space-y-4 bg-pink-50">
+            <?php $__currentLoopData = $messages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $chat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <div class="flex <?php echo e($chat->user_name == (auth()->user()->name ?? 'Anonim') ? 'justify-end' : 'justify-start'); ?>">
+                    <div class="max-w-xs px-4 py-3 rounded-xl shadow <?php echo e($chat->user_name == (auth()->user()->name ?? 'Anonim') ? 'bg-pink-300 text-white' : 'bg-white text-gray-800'); ?>">
+                        <p class="text-xs font-semibold mb-1"><?php echo e($chat->user_name); ?></p>
+                        <p class="text-sm leading-relaxed"><?php echo e($chat->message); ?></p>
+                    </div>
+                </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </main>
+
         
-    </main>
+        <footer class="bg-white p-4 border-t flex items-center gap-3">
+            <form action="<?php echo e(route('chatbot.send')); ?>" method="POST" class="flex w-full gap-3">
+                <?php echo csrf_field(); ?>
+                <input type="text" name="message" placeholder="Tulis pesan..." required
+                    class="flex-grow px-4 py-2 rounded-full border border-gray-300 focus:ring-2 focus:ring-pink-300 focus:outline-none">
 
-    <footer class="bg-pink-brand text-white py-2 px-4 flex items-center shadow-lg">
-        <form action="#" method="POST" class="flex w-full items-center space-x-3">
-            
-            
+                <button type="submit" class="bg-pink-400 hover:bg-pink-500 text-white px-5 py-2 rounded-full shadow-md transition">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </footer>
+    </div>
+</section>
 
-            <input type="text" 
-                   placeholder="Selamat datang! Apa yang bisa saya bantu?" 
-                   class="flex-grow py-2 px-4 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-white"
-                   style="background-color: #FEE7EE;">
-            
-            <button type="submit" class="bg-white text-pink-brand p-3 rounded-full hover:opacity-80 transition duration-150">
-                <i class="fas fa-paper-plane fa-lg"></i>
-            </button>
-        </form>
-    </footer>
-
-</body>
-</html>
-
-</body>
-</html><?php /**PATH C:\laragon\www\Za-Hi-Beauty-Care\resources\views/consultation/chatbot.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\Za-Hi-Beauty-Care\resources\views/consultation/chatbot.blade.php ENDPATH**/ ?>

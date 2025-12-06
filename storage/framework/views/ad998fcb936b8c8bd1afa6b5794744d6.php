@@ -115,11 +115,15 @@
             </a>
 
             <a href="/admin/testimonials" class="nav-link flex items-center gap-3 p-3 rounded <?php echo e($active('admin/testimonials*')); ?>">
-                <i class="fas fa-comments w-5 text-center"></i> <span class="sidebar-text">Testimoninals</span>
+                <i class="fas fa-star w-5 text-center"></i> <span class="sidebar-text">Testimoninals</span>
             </a>
 
             <a href="/admin/gallery" class="nav-link flex items-center gap-3 p-3 rounded <?php echo e($active('admin/gallery*')); ?>">
                 <i class="fas fa-image w-5 text-center"></i> <span class="sidebar-text">Gallery</span>
+            </a>
+
+            <a href="/admin/chats" class="nav-link flex items-center gap-3 p-3 rounded <?php echo e($active('admin/chats*')); ?>">
+                <i class="fas fa-comments w-5 text-center"></i> <span class="sidebar-text">Chat</span>
             </a>
 
             <!-- LOGOUT BUTTON -->
