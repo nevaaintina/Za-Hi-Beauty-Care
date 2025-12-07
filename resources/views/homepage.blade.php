@@ -224,7 +224,7 @@
         </div>
 
         <div class="text-center mt-12 scroll-reveal">
-            <a href="https://wa.me/6289506143030?text=Halo,%20saya%20ingin%20liat%20promonya" target="_blank"
+            <a href="https://wa.me/6281213081202?text=Halo,%20saya%20ingin%20liat%20promonya" target="_blank"
                 class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-full shadow-xl transition hover:scale-105">
                 <i class="fab fa-whatsapp text-xl mr-2"></i>
                 <span class="font-bold">Klaim Promo Sekarang</span>
