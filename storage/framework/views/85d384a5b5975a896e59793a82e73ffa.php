@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('title', 'Manage Chats'); ?>
 
 <?php $__env->startSection('content'); ?>

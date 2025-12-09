@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('title','Add Gallery'); ?>
 <?php $__env->startSection('content'); ?>
 
