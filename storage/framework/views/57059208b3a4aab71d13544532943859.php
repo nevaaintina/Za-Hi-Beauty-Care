@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('title', $service->name . ' - ZA & Hi Beauty Care'); ?>
 
 <?php $__env->startSection('content'); ?>

@@ -1,5 +1,3 @@
-
-
 <?php $__env->startSection('title', ucfirst($kategori) . ' Treatment'); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -117,7 +115,7 @@
 
     
     <div class="text-center mt-14 reveal">
-        <a href="https://wa.me/6289506143030"
+        <a href="https://wa.me/6281213081202"
             class="py-3 px-10 bg-pink-500 text-white font-bold rounded-full shadow-lg hover:scale-105 transition">
             Booking Via Whatsapp
         </a>

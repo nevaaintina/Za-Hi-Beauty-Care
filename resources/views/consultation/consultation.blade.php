@@ -57,32 +57,6 @@
 
     </div>
 
-    {{-- ======================= FOTO BAWAH POJOK + NAMA ======================= --}}
-    <div class="absolute bottom-6 left-0 right-0 flex justify-center gap-12">
-
-        {{-- Facial --}}
-        <div class="text-center">
-            <img src="{{ $imgFacial ? asset('storage/' . $imgFacial->image) : asset('images/default.jpg') }}"
-                 class="w-20 h-20 object-cover rounded-full shadow-lg mx-auto">
-            <p class="mt-2 text-sm font-semibold text-gray-700">Facial</p>
-        </div>
-
-        {{-- Body --}}
-        <div class="text-center">
-            <img src="{{ $imgBody ? asset('storage/' . $imgBody->image) : asset('images/default.jpg') }}"
-                 class="w-20 h-20 object-cover rounded-full shadow-lg mx-auto">
-            <p class="mt-2 text-sm font-semibold text-gray-700">Body</p>
-        </div>
-
-        {{-- Hair --}}
-        <div class="text-center">
-            <img src="{{ $imgHair ? asset('storage/' . $imgHair->image) : asset('images/default.jpg') }}"
-                 class="w-20 h-20 object-cover rounded-full shadow-lg mx-auto">
-            <p class="mt-2 text-sm font-semibold text-gray-700">Hair</p>
-        </div>
-
-    </div>
-
 </section>
 
 @include('layouts.footer')

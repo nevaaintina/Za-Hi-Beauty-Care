@@ -30,7 +30,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
 
             
-            <a href="https://wa.me/6289506143030" target="_blank"
+            <a href="https://wa.me/6289506143030?text=Halo,%20saya%20ingin%20konsultasi%20" target="_blank"
                class="block p-6 rounded-xl shadow-xl transition duration-300 transform hover:scale-105"
                style="background-color: #E195AB;">
                 <i class="fab fa-whatsapp text-4xl text-white mb-4"></i>
@@ -51,32 +51,6 @@
                 </p>
             </a>
 
-        </div>
-
-    </div>
-
-    
-    <div class="absolute bottom-6 left-0 right-0 flex justify-center gap-12">
-
-        
-        <div class="text-center">
-            <img src="<?php echo e($imgFacial ? asset('storage/' . $imgFacial->image) : asset('images/default.jpg')); ?>"
-                 class="w-20 h-20 object-cover rounded-full shadow-lg mx-auto">
-            <p class="mt-2 text-sm font-semibold text-gray-700">Facial</p>
-        </div>
-
-        
-        <div class="text-center">
-            <img src="<?php echo e($imgBody ? asset('storage/' . $imgBody->image) : asset('images/default.jpg')); ?>"
-                 class="w-20 h-20 object-cover rounded-full shadow-lg mx-auto">
-            <p class="mt-2 text-sm font-semibold text-gray-700">Body</p>
-        </div>
-
-        
-        <div class="text-center">
-            <img src="<?php echo e($imgHair ? asset('storage/' . $imgHair->image) : asset('images/default.jpg')); ?>"
-                 class="w-20 h-20 object-cover rounded-full shadow-lg mx-auto">
-            <p class="mt-2 text-sm font-semibold text-gray-700">Hair</p>
         </div>
 
     </div>

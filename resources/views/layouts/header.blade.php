@@ -3,7 +3,7 @@
 
         <!-- LOGO BESAR -->
         <div class="flex items-center space-x-2">
-            <img src="{{ asset('images/logo.png') }}" alt="ZA & Hi Logo" class="h-14 md:h-16">
+            <img src="{{ asset('images/logo1.png') }}" alt="ZA & Hi Logo" class="h-10 logo-white">
         </div>
 
         <!-- MENU DESKTOP -->
