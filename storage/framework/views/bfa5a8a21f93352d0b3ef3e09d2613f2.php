@@ -6,7 +6,7 @@
             <div class="flex items-center space-x-3 mb-4">
                 <img src="<?php echo e(asset('images/logo.png')); ?>" 
                      alt="ZA & Hi Logo" 
-                     class="h-20 md:h-24 filter brightness-0 invert">
+                     class="h-12 md:h-14 filter brightness-0 invert">
             </div>
             <p class="text-sm md:text-base leading-relaxed">
                 Cantik Alami, Percaya Diri<br>Sepanjang Hari.

@@ -21,9 +21,11 @@
         </a>
 
         {{-- Judul --}}
-        <h2 class="text-2xl font-extrabold mb-12 text-center text-gray-800 tracking-wide">
-            ✨ Akun Saya ✨
-        </h2>
+       <h2 class="text-2xl font-extrabold mb-12 text-center tracking-wide"
+    style="color: #C06C84;">
+    Akun Saya
+</h2>
+
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
 

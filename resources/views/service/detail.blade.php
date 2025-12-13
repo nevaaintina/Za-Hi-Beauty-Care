@@ -29,15 +29,24 @@
 <section class="relative w-full h-[420px] overflow-hidden flex items-center justify-center">
 
     {{-- BACKGROUND --}}
-    <div class="absolute inset-0">
-        <img src="{{ asset('storage/' . ($banner->image ?? $service->image)) }}"
-             class="w-full h-full object-cover scale-110 opacity-80">
-    </div>
+   <div class="absolute inset-0">
+    <img src="{{ asset('storage/' . ($banner->image ?? $service->image)) }}"
+         class="w-full h-full object-cover scale-110">
+
+    <!-- Shadow Overlay -->
+    <div class="absolute inset-0 bg-black/40"></div>
+</div>
+
 
     {{-- TITLE DI TENGAH --}}
-    <h1 class="relative z-10 text-white text-5xl font-extrabold drop-shadow-2xl uppercase tracking-wide text-center">
-        {{ $service->name }}
-    </h1>
+    <h1 class="relative z-10 text-5xl font-extrabold uppercase tracking-wide text-center"
+    style="
+        color: #E195AB;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+    ">
+    {{ $service->name }}
+</h1>
+
 
 </section>
 

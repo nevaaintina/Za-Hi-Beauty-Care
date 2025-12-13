@@ -43,12 +43,29 @@
     <div class="absolute inset-0 bg-black/40 z-20"></div>
 
 <div class="absolute inset-0 z-30 flex flex-col items-start justify-center px-6 md:px-20 text-left text-white">
-    
-    {{-- Teks Pembuka --}}
-    <p class="mb-2 text-lg drop-shadow-md" style="color: #E195AB;">Selamat datang di</p>
+    @auth
+  <h3 class="font-elegant text-xl md:text-2xl font-medium tracking-wide mb-2"
+    style="
+        color: #D66E98;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    ">
+    Selamat Datang, {{ Auth::user()->name }}
+</h3>
+
+
+@endauth
+   
 
     {{-- Judul Utama (Menggunakan font aesthetic dan ukuran yang sudah disesuaikan) --}}
-    <h1 class="font-elegant text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg" style="color: #E195AB;">ZA & Hi Beauty Care</h1>
+    <h1 class="font-elegant text-4xl md:text-5xl font-semibold tracking-wide mb-4"
+    style="
+        color: #E195AB;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    ">
+    ZA & Hi Beauty Care
+</h1>
+
+
 
     {{-- Teks Deskripsi --}}
     <p class="max-w-xl text-lg leading-relaxed mb-8 drop-shadow-lg" style="color: #f9dce4ff;">

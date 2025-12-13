@@ -77,10 +77,11 @@
 
     {{-- ======================= BUTTON WA ======================= --}}
     <div class="text-center mt-12 mb-16">
-        <a href="https://wa.me/6281213081202?text=Halo,%20saya%20ingin%20booking%20"
-           class="py-3 px-7 bg-green-500 text-white font-bold rounded-full shadow-lg hover:bg-green-600 transition">
-            Booking Via Whatsapp
-        </a>
+         <a href="https://wa.me/6281213081202?text=Halo,%20saya%20ingin%20liat%20promonya" target="_blank"
+                class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-full shadow-xl transition hover:scale-105">
+                <i class="fab fa-whatsapp text-xl mr-2"></i>
+                <span class="font-bold">Booking Via Whatsapp</span>
+            </a>
     </div>
 
 
@@ -88,9 +89,7 @@
     <section class="py-10 bg-[#fcebeb]">
         <h2 class="text-3xl font-bold text-center mb-4">Pricelist</h2>
 
-        <p id="plDescription" class="text-center text-gray-700 mb-10">
-            Klik salah satu gambar untuk melihat detail.
-        </p>
+        
 
         <div class="relative max-w-5xl mx-auto flex items-center justify-center">
 

@@ -27,16 +27,25 @@
 <section class="relative w-full h-[420px] overflow-hidden flex items-center justify-center">
 
     
-    <div class="absolute inset-0">
-        <img src="<?php echo e(asset('storage/' . ($banner->image ?? $service->image))); ?>"
-             class="w-full h-full object-cover scale-110 opacity-80">
-    </div>
+   <div class="absolute inset-0">
+    <img src="<?php echo e(asset('storage/' . ($banner->image ?? $service->image))); ?>"
+         class="w-full h-full object-cover scale-110">
+
+    <!-- Shadow Overlay -->
+    <div class="absolute inset-0 bg-black/40"></div>
+</div>
+
 
     
-    <h1 class="relative z-10 text-white text-5xl font-extrabold drop-shadow-2xl uppercase tracking-wide text-center">
-        <?php echo e($service->name); ?>
+    <h1 class="relative z-10 text-5xl font-extrabold uppercase tracking-wide text-center"
+    style="
+        color: #E195AB;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+    ">
+    <?php echo e($service->name); ?>
 
-    </h1>
+</h1>
+
 
 </section>
 
@@ -87,7 +96,7 @@
 
     
     <div class="text-center mt-10">
-        <a href="https://wa.me/628xxxxxxxxxx?text=Halo,%20saya%20ingin%20booking%20<?php echo e(urlencode($service->name)); ?>"
+        <a href="https://wa.me/6289506143030?text=Halo,%20saya%20ingin%20booking%20<?php echo e(urlencode($service->name)); ?>"
            class="flex items-center justify-center gap-2 px-6 py-3 bg-green-500 text-white font-bold rounded-full shadow-lg text-lg w-max mx-auto hover:bg-green-600 transition">
             Booking Via Whatsapp
         </a>

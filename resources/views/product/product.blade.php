@@ -44,12 +44,23 @@
     <div class="absolute inset-0 bg-black/40 z-20"></div>
 
     <div class="absolute inset-0 z-30 flex flex-col items-center justify-center text-center">
-        <h1 class="text-5xl md:text-5xl font-extrabold text-white mb-2 tracking-wider">
-            ZA & Hi Beauty Care
-        </h1>
-        <p class="text-3xl md:text-4xl font-semibold text-white">
-            Product
-        </p>
+        <h1 class="text-5xl md:text-5xl font-extrabold mb-2 tracking-wider"
+    style="
+        color: #E195AB;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    ">
+    ZA & Hi Beauty Care
+</h1>
+
+       <p class="text-3xl md:text-4xl font-semibold"
+   style="
+        color: #D66E98;
+        text-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+   ">
+    Product
+</p>
+
+
     </div>
 
 </section>

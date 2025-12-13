@@ -13,6 +13,33 @@
     $imgHair   = \App\Models\Gallery::where('category', 'aset')->where('description', 'hair')->first();
 @endphp
 
+{{-- HERO BANNER --}}
+<section class="relative w-full h-[260px] md:h-[380px] overflow-hidden">
+
+    <!-- Background Image -->
+    <img 
+        src="{{ asset('images/konsultasi.jpg') }}"
+        alt="Konsultasi ZA & Hi Beauty Care"
+        class="absolute inset-0 w-full h-full object-cover"
+    >
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black/30"></div>
+
+    <!-- Text -->
+    <div class="absolute inset-0 z-10 flex items-center justify-center px-4 text-center">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-wide"
+            style="
+                font-family: 'Playfair Display', serif;
+                color: #ead8ddff;
+                text-shadow: 0 4px 12px rgba(0,0,0,0.45);
+            ">
+            Hai cantik, ada yang bisa kami bantu?
+        </h1>
+    </div>
+
+</section>
+
 <section class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 relative"
          style="background-color: #FFE2E2;">
 
@@ -25,9 +52,7 @@
             <i class="fas fa-arrow-left fa-lg mr-2"></i> Back
         </a>
         
-        <div class="max-w-2xl mx-auto text-center mb-12">
-            <p class="text-lg font-semibold text-gray-700 mb-4">Hai cantik, ada yang bisa kami bantu?</p>
-        </div>
+        
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
 
@@ -58,6 +83,8 @@
     </div>
 
 </section>
+
+
 
 @include('layouts.footer')
 
