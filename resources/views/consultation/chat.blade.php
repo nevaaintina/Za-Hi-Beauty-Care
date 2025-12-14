@@ -8,79 +8,88 @@
 
 <style>
     :root {
-        --pink-soft: #FFE2E2;
-        --pink-user: #E195AB;
-        --admin-green: #DCF8C6;
+        --pink-header: #E1A4AE; 
+        --pink-user: #D66D88;
+        --admin-color: #B2D8B2;
+        --pink-dark: #944A5A;
+    }
+
+    /* BACKGROUND FOTO */
+    .chat-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url('{{ asset('images/konsultasi.jpg') }}');
+        background-size: cover;
+        background-position: center;
+        z-index: 0;
+    }
+
+    /* OVERLAY GELAP */
+    .chat-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+    }
+
+    /* LOGO POJOK KANAN ATAS */
+    .chat-logo {
+        position: absolute;
+        top: 18px;
+        right: 22px;
+        width: 90px;
+        z-index: 25;
+        filter: drop-shadow(0 4px 10px rgba(0,0,0,.6));
     }
 
     #chat-container {
         flex-grow: 1;
         overflow-y: auto;
-        scroll-behavior: smooth;
-        padding-bottom: 80px;
+        padding: 1.5rem 1.5rem 6rem;
+        position: relative;
+        z-index: 10;
     }
 
-    /* BUBBLE ANIMATION */
+    /* CHAT BUBBLE */
     .bubble {
         max-width: 75%;
         padding: 12px 16px;
         border-radius: 18px;
         font-size: 14px;
-        position: relative;
         animation: pop .25s ease;
-        transition: transform .15s ease;
+        transition: .2s ease;
+        box-shadow: 0 3px 8px rgba(0,0,0,.15);
     }
 
-    .bubble:hover {
-        transform: scale(1.03);
-    }
-
-    @keyframes pop {
-        0% { transform: scale(.85); opacity: 0; }
-        100% { transform: scale(1); opacity: 1; }
-    }
-
-    /* BUBBLE COLORS */
-    .bubble.me { background: var(--pink-user); color: #fff; margin-left: auto; }
-    .bubble.other { background: #fff; color: #333; margin-right: auto; }
-    .bubble.admin { background: var(--admin-green); margin-right: auto; }
-
-    /* BUBBLE TRIANGLE */
-    .bubble.me::after {
-        content: "";
-        position: absolute;
-        right: -6px; bottom: 8px;
-        width: 10px; height: 10px;
+    .bubble.me {
         background: var(--pink-user);
-        transform: rotate(45deg);
+        color: #fff;
+        margin-left: auto;
+        border-bottom-right-radius: 6px;
     }
-    .bubble.other::after {
-        content: "";
-        position: absolute;
-        left: -6px; bottom: 8px;
-        width: 10px; height: 10px;
+
+    .bubble.other {
         background: #fff;
-        transform: rotate(45deg);
+        color: #333;
+        border-bottom-left-radius: 6px;
     }
-    .bubble.admin::after {
-        content: "";
-        position: absolute;
-        left: -6px; bottom: 8px;
-        width: 10px; height: 10px;
-        background: var(--admin-green);
-        transform: rotate(45deg);
+
+    .bubble.admin {
+        background: var(--admin-color);
+        color: #333;
+        border-bottom-left-radius: 6px;
     }
 
     .username {
         font-size: 11px;
-        font-weight: bold;
-        margin-bottom: 3px;
+        font-weight: 600;
+        opacity: .85;
     }
 
     .time {
         font-size: 10px;
-        opacity: .6;
-        margin-top: 6px;
+        opacity: .7;
+        margin-top: 4px;
         text-align: right;
     }
 
@@ -89,107 +98,121 @@
         position: absolute;
         top: -6px;
         right: -6px;
-        background: rgba(0,0,0,.2);
-        color: white;
-        padding: 5px;
+        background: #fff;
+        color: var(--pink-dark);
+        padding: 4px;
         border-radius: 50%;
         font-size: 10px;
         opacity: 0;
-        cursor: pointer;
         transition: .2s ease;
+        box-shadow: 0 2px 6px rgba(0,0,0,.3);
     }
 
     .bubble.me:hover .delete-btn {
         opacity: 1;
     }
 
-    /* INPUT SEND */
+    /* SEND */
     .send-btn {
         background: var(--pink-user);
         border-radius: 50%;
         color: #fff;
-        padding: 15px;
+        padding: 13px;
+        box-shadow: 0 4px 12px rgba(214,109,136,.6);
         transition: .2s ease;
     }
 
     .send-btn:hover {
-        transform: scale(1.1);
-        box-shadow: 0 0 10px rgba(225, 149, 171, .6);
+        transform: scale(1.05);
     }
 </style>
 
-<section class="w-full h-screen flex flex-col" style="background: var(--pink-soft)">
+<section class="w-full h-screen flex flex-col relative font-sans">
 
-    <header class="bg-[var(--pink-user)] text-white px-5 py-4 flex items-center gap-3 shadow-md">
-        <a href="/konsultasi" class="text-white text-xl">
+    {{-- BACKGROUND --}}
+    <div class="chat-bg"></div>
+
+    {{-- LOGO --}}
+    <img src="{{ asset('images/logo1.png') }}" class="chat-logo" alt="Logo">
+
+    {{-- HEADER --}}
+    <header class="text-white px-5 py-4 flex items-center gap-3 shadow-lg sticky top-0 z-20"
+        style="background: linear-gradient(135deg, var(--pink-header), var(--pink-user));">
+        
+        <a href="/konsultasi" class="text-xl hover:bg-white/20 p-1 rounded-full">
             <i class="fas fa-arrow-left"></i>
         </a>
-        <h1 class="text-lg font-semibold flex items-center gap-2">
-            <i class="fas fa-comments text-2xl"></i> Forum Diskusi ZaHi
+
+        <h1 class="text-xl font-bold flex items-center gap-3">
+            <i class="fas fa-comments text-2xl"></i>
+            Forum Diskusi ZaHi
         </h1>
     </header>
 
-    <main id="chat-container" class="p-4 space-y-6">
+    {{-- CHAT --}}
+    <main id="chat-container" class="space-y-5">
         @foreach ($messages as $chat)
 
-            @php
-                $isMe = auth()->check() && $chat->user_name == auth()->user()->name;
-                $isAdmin = str_contains($chat->user_name, '[ADMIN]');
-            @endphp
+        @php
+            $isMe = auth()->check() && $chat->user_name == auth()->user()->name;
+            $isAdmin = str_contains($chat->user_name, '[ADMIN]');
+            $avatarColor = $isMe ? 'bg-pink-400' : ($isAdmin ? 'bg-green-400' : 'bg-gray-400');
+            $initial = strtoupper(substr($chat->user_name, 0, 1));
+        @endphp
 
-            <div class="flex {{ $isMe ? 'justify-end' : 'justify-start' }}">
-                <div class="max-w-[80%] relative">
+        <div class="flex items-start {{ $isMe ? 'justify-end' : 'justify-start' }} gap-3">
 
-                    <p class="username {{ $isMe ? 'text-right text-pink-700' : 'text-left text-pink-900' }}">
-                        {{ $chat->user_name }}
+            {{-- AVATAR --}}
+            @if(!$isMe)
+            <div class="w-8 h-8 rounded-full {{ $avatarColor }} flex items-center justify-center text-white text-sm font-bold shadow-md">
+                {{ $initial }}
+            </div>
+            @endif
+
+            <div class="max-w-[80%] relative">
+                <p class="username text-white mb-1 {{ $isMe ? 'text-right' : '' }}">
+                    {{ $chat->user_name }}
+                </p>
+
+                <div class="bubble {{ $isAdmin ? 'admin' : ($isMe ? 'me' : 'other') }}">
+                    {{ $chat->message }}
+
+                    <p class="time {{ $isMe ? 'text-white/70' : 'text-gray-500' }}">
+                        {{ $chat->created_at->format('H:i') }}
                     </p>
 
-                    <div class="bubble
-                        @if($isAdmin)
-                            admin
-                        @elseif($isMe)
-                            me
-                        @else
-                            other
-                        @endif">
-
-                        {{-- Pesan --}}
-                        {{ $chat->message }}
-
-                        {{-- Waktu --}}
-                        <p class="time">{{ $chat->created_at->format('H:i') }}</p>
-
-                        {{-- Tombol hapus (hanya untuk pesan sendiri) --}}
-                        @if($isMe)
-                        <form action="{{ route('chat.delete', $chat->id) }}" method="POST"
-                              onsubmit="return confirm('Hapus pesan ini?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="delete-btn">
-                                <i class="fas fa-xmark"></i>
-                            </button>
-                        </form>
-                        @endif
-
-                    </div>
-
+                    @if($isMe)
+                    <form action="{{ route('chat.delete', $chat->id) }}" method="POST"
+                        onsubmit="return confirm('Hapus pesan ini?')">
+                        @csrf
+                        @method('DELETE')
+                        <button class="delete-btn">
+                            <i class="fas fa-xmark"></i>
+                        </button>
+                    </form>
+                    @endif
                 </div>
             </div>
 
+            @if($isMe)
+            <div class="w-8 h-8 rounded-full {{ $avatarColor }} flex items-center justify-center text-white text-sm font-bold shadow-md">
+                {{ $initial }}
+            </div>
+            @endif
+
+        </div>
         @endforeach
     </main>
 
-    <footer class="p-4 bg-white/40 backdrop-blur-lg">
-        <form action="{{ route('chat.send') }}" method="POST" class="flex items-center gap-3">
+    {{-- FOOTER --}}
+    <footer class="p-4 bg-white/80 backdrop-blur-md fixed bottom-0 left-0 right-0 z-30">
+        <form action="{{ route('chat.send') }}" method="POST" class="flex gap-3">
             @csrf
-
-            <div class="flex-grow flex items-center bg-white px-4 py-3 rounded-full border-2 border-pink-300 shadow">
-                <input type="text" name="message" placeholder="Tulis pesan..." required
-                       class="w-full outline-none bg-transparent">
-            </div>
+            <input type="text" name="message" placeholder="Tulis pesan..." required
+                class="flex-grow px-4 py-3 rounded-2xl border outline-none">
 
             <button class="send-btn">
-                <i class="fas fa-paper-plane text-lg"></i>
+                <i class="fas fa-paper-plane"></i>
             </button>
         </form>
     </footer>
