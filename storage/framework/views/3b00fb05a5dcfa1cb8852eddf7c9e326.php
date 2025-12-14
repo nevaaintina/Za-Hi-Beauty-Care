@@ -22,60 +22,137 @@
 
 
 
-<section class="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden h-[550px] md:h-[650px]"
+<section class="relative overflow-hidden h-[650px]">
+
+<!-- Ornamen blur kiri atas -->
+<div class="absolute -top-24 -left-24 w-96 h-96 
+            bg-[#e8bac6]/40 
+            rounded-full 
+            blur-3xl 
+            z-10">
+</div>
+
+<!-- Ornamen blur kanan bawah -->
+<div class="absolute -bottom-24 -right-24 w-[28rem] h-[28rem]
+            bg-[#cf8d9e]/30
+            rounded-full
+            blur-3xl
+            z-10">
+</div>
+
+    
     <div class="absolute inset-0">
         <?php if(!empty($banner) && $banner instanceof \Illuminate\Support\Collection && $banner->count() > 0): ?>
             <?php $__currentLoopData = $banner; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <img src="<?php echo e(asset('storage/' . $item->image)); ?>"
-                     alt="Banner <?php echo e($index + 1); ?>"
                      class="banner-img absolute inset-0 w-full h-full object-cover
                             transition-opacity duration-1000 ease-in-out
                             <?php echo e($index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'); ?>">
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         <?php else: ?>
             <img src="<?php echo e(asset('images/default-banner.jpg')); ?>"
-                 class="absolute inset-0 w-full h-full object-cover opacity-100 z-10">
+                 class="absolute inset-0 w-full h-full object-cover">
         <?php endif; ?>
     </div>
 
-    <div class="absolute inset-0 bg-black/40 z-20"></div>
+    
+    <div class="absolute inset-0 z-20 bg-black/45"></div>
 
-<div class="absolute inset-0 z-30 flex flex-col items-start justify-center px-6 md:px-20 text-left text-white">
-    <?php if(auth()->guard()->check()): ?>
-  <h3 class="font-elegant text-xl md:text-2xl font-medium tracking-wide mb-2"
-    style="
-        color: #D66E98;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-    ">
-    Selamat Datang, <?php echo e(Auth::user()->name); ?>
-
-</h3>
-
-
-<?php endif; ?>
-   
 
     
-    <h1 class="font-elegant text-4xl md:text-5xl font-semibold tracking-wide mb-4"
-    style="
-        color: #E195AB;
-        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-    ">
-    ZA & Hi Beauty Care
+    <div class="relative z-30 h-full flex items-center px-6 md:px-20 font-inter">
+        <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+            
+            <div class="space-y-6 text-center md:text-left">
+                <?php if(auth()->guard()->check()): ?>
+               <h1 class="font-playfair whitespace-nowrap
+           text-5xl sm:text-6xl lg:text-7xl
+           font-extrabold italic leading-tight
+           tracking-[0.06em]
+           text-[#fff5f7]
+           drop-shadow-[0_1px_4px_rgba(148,74,96,0.18)]">
+    Hello, <?php echo e(Auth::user()->name); ?>!
 </h1>
 
 
 
-    
-    <p class="max-w-xl text-lg leading-relaxed mb-8 drop-shadow-lg" style="color: #f9dce4ff;">
-        Salon kecantikan dengan konsep minimalis modern bernuansa pink yang dirancang untuk memberikan kenyamanan sekaligus pengalaman 
-        perawatan yang menyenangkan. Kami hadir sebagai tempat perawatan kecantikan yang menawarkan pelayanan lengkap 
-        mulai dari perawatan wajah, tubuh, rambut, hingga skincare, dengan kualitas terbaik dan harga yang bersahabat.
-    </p>
-    
+
+
+
+                <?php endif; ?>
+
+                <p class="text-xl text-[#f5f5f5] max-w-lg mx-auto md:mx-0">
+                    Selamat datang di
+                    <span class="font-bold text-[#cf8d9e]">ZA & Hi Beauty Care</span>,
+                    tempatnya perawatan kulit premium Anda.
+                </p>
+
+                <div class="pt-4 flex justify-center md:justify-start gap-4">
+                    <a href="<?php echo e(route('product.index')); ?>"
+   class="px-8 py-3 rounded-full text-white font-semibold bg-[#c98892]
+          hover:bg-[#b3747d] transition transform hover:scale-105 shadow-xl">
+    Jelajahi Produk
+</a>
+
+                    <a href="<?php echo e(route('layanan.index')); ?>"
+   class="px-8 py-3 rounded-full text-[#d8a0a9] font-semibold
+          border-2 border-[#d8a0a9] hover:bg-[#f7e6e9]
+          transition transform hover:scale-105">
+    Lihat Perawatan
+</a>
+                </div>
+            </div>
+
+            
+           <!-- CARD PRODUK (DI BAWAH BUTTON) -->
+<div class="relative mt-14 max-w-md">
+
+    <!-- Background pink lembut -->
+    <div class="absolute inset-0 rounded-3xl 
+        bg-[#efd2d9]/35
+        scale-105">
     </div>
 
+    <div class="relative p-8 rounded-3xl bg-white/85">
+
+        <h2 class="text-2xl font-playfair
+            font-semibold italic
+            tracking-[0.08em]
+            text-[#c48797]
+            mb-4">
+            The Glow Series
+        </h2>
+
+        <p class="text-gray-600 mb-6 leading-relaxed">
+            Paket perawatan lengkap untuk kulit cerah, sehat, dan bercahaya setiap hari.
+        </p>
+
+        <div class="grid grid-cols-3 gap-4 text-center">
+            <div>
+                <img src="<?php echo e(asset('images/serum.jpeg')); ?>" class="h-36 w-full rounded-xl object-cover">
+                <p class="mt-2 text-sm">Serum</p>
+            </div>
+            <div>
+                <img src="<?php echo e(asset('images/daycream.jpeg')); ?>" class="h-36 w-full rounded-xl object-cover">
+                <p class="mt-2 text-sm">Day Cream</p>
+            </div>
+            <div>
+                <img src="<?php echo e(asset('images/toner.jpeg')); ?>" class="h-36 w-full rounded-xl object-cover">
+                <p class="mt-2 text-sm">Toner</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+        </div>
+    </div>
 </section>
+
+
 
 
 

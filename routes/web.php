@@ -37,6 +37,8 @@ use App\Http\Controllers\Admin\AdminChatController;
 use App\Http\Controllers\Admin\DashboardController;
 
 
+use App\Http\Controllers\ServicesController;
+
 /*
 |--------------------------------------------------------------------------
 | HOMEPAGE
@@ -136,6 +138,15 @@ Route::prefix('admin')
 | FALLBACK
 |--------------------------------------------------------------------------
 */
+Route::fallback(function () {
+    return redirect('/login');
+});
+
+Route::get('/produk', [ProductPageController::class, 'index'])->name('produk');
+Route::get('/produk/{id}', [ProductPageController::class, 'detail'])->name('produk.detail');
+
+Route::get('/layanan', [ServicesController::class, 'index'])->name('layanan');
+
 Route::fallback(function () {
     return redirect('/login');
 });
