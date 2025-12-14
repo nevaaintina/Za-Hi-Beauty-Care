@@ -22,78 +22,150 @@
 
 
 
-<!-- Hero Banner Section - Diintegrasikan ke dalam halaman utama Anda -->
-<section class="hero-gradient min-h-screen flex items-center justify-center p-4 sm:p-8">
-    <div class="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center py-16">
+<section class="relative overflow-hidden h-[650px]">
 
-        <!-- Teks Hero Banner (Kiri) -->
-        <div class="space-y-6 text-center md:text-left">
-            <!-- Sapaan User dengan Font Playfair yang Elegan -->
-            <h1 class="font-playfair text-6xl sm:text-7xl lg:text-8xl font-extrabold leading-tight text-zahi-primary italic">
-                Hello, Surya!
-            </h1>
+<!-- Ornamen blur kiri atas -->
+<div class="absolute -top-24 -left-24 w-96 h-96 
+            bg-[#e8bac6]/40 
+            rounded-full 
+            blur-3xl 
+            z-10">
+</div>
 
-            <!-- Subjudul yang menyambut user -->
-            <p class="font-inter text-xl sm:text-2xl text-gray-700 max-w-lg mx-auto md:mx-0">
-                Selamat datang di <span class="font-bold text-zahi-primary">Zahi Beauty Care</span>, tempatnya perawatan kulit premium Anda.
-            </p>
+<!-- Ornamen blur kanan bawah -->
+<div class="absolute -bottom-24 -right-24 w-[28rem] h-[28rem]
+            bg-[#cf8d9e]/30
+            rounded-full
+            blur-3xl
+            z-10">
+</div>
 
-            <!-- Tombol Aksi -->
-            <div class="pt-4 flex justify-center md:justify-start space-x-4">
-                <a href="#" class="inline-block px-8 py-3 rounded-full text-white font-bold tracking-wider bg-zahi-button hover:bg-pink-700 transition duration-300 transform hover:scale-105 shadow-xl">
-                    Jelajahi Produk
-                </a>
-                <a href="#" class="inline-block px-8 py-3 rounded-full text-zahi-primary font-bold border-2 border-zahi-primary hover:bg-zahi-pink transition duration-300 transform hover:scale-105">
-                    Lihat Perawatan
-                </a>
-            </div>
-        </div>
+    
+    
+    <div class="absolute inset-0">
+        <?php if(!empty($banner) && $banner instanceof \Illuminate\Support\Collection && $banner->count() > 0): ?>
+            <?php $__currentLoopData = $banner; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <img
+                    src="<?php echo e(asset('storage/' . $item->image)); ?>"
+                    class="banner-img absolute inset-0 w-full h-full object-cover
+                           transition-opacity duration-1000 ease-in-out
+                           <?php echo e($index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'); ?>"
+                >
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <?php else: ?>
+            <img
+                src="<?php echo e(asset('images/default-banner.jpg')); ?>"
+                class="absolute inset-0 w-full h-full object-cover"
+            >
+        <?php endif; ?>
+    </div>
 
-        <!-- Ilustrasi / Gambar Produk (Kanan) -->
-        <div class="relative flex justify-center md:justify-end">
-            <!-- Background visual yang lembut -->
-            <div class="absolute inset-0 bg-zahi-pink rounded-3xl opacity-50 transform skew-y-3 -rotate-3 scale-105"></div>
-            <!-- Card Produk Mockup -->
-            <div class="relative p-6 sm:p-10 rounded-3xl shadow-2xl product-overlay max-w-sm w-full md:max-w-none">
-                <h2 class="text-3xl font-playfair font-semibold text-zahi-primary mb-4">The Glow Series</h2>
-                <p class="text-gray-600 mb-6">Paket lengkap perawatan untuk kulit bercahaya alami. Eksklusif hanya untuk Anda, Surya.</p>
-                
-                <!-- Placeholder Gambar Produk Kosmetik -->
-                <div class="flex justify-around items-center space-x-4 h-40">
-                    <img src="https://placehold.co/100x120/d8a0a9/ffffff?text=Serum+AHA" alt="Serum AHA Placeholder" class="rounded-lg shadow-lg object-cover transform hover:scale-105 transition duration-300" onerror="this.onerror=null;this.src='https://placehold.co/100x120/d8a0a9/ffffff?text=Product';">
-                    <img src="https://placehold.co/120x150/c98892/ffffff?text=Day+Cream" alt="Day Cream Placeholder" class="rounded-lg shadow-lg object-cover transform hover:scale-105 transition duration-300" onerror="this.onerror=null;this.src='https://placehold.co/120x150/c98892/ffffff?text=Product';">
-                    <img src="https://placehold.co/90x110/b3747d/ffffff?text=Toner" alt="Toner Placeholder" class="rounded-lg shadow-lg object-cover transform hover:scale-105 transition duration-300" onerror="this.onerror=null;this.src='https://placehold.co/90x110/b3747d/ffffff?text=Product';">
+    
+    
+    
+    <div class="absolute inset-0 z-20 bg-black/45"></div>
+
+    
+    
+    
+    <div class="relative z-30 h-full flex items-center px-6 md:px-20 font-inter">
+        <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+            
+            
+            
+            <div class="space-y-6 text-center md:text-left">
+
+                <?php if(auth()->guard()->check()): ?>
+                    <h1 class="font-playfair whitespace-nowrap
+                               text-5xl sm:text-6xl lg:text-7xl
+                               font-extrabold italic leading-tight
+                               tracking-[0.06em]
+                               text-[#fff5f7]
+                               drop-shadow-[0_1px_4px_rgba(148,74,96,0.18)]">
+                        Hello, <?php echo e(Auth::user()->name); ?>!
+                    </h1>
+                <?php endif; ?>
+
+                <p class="text-xl text-[#f5f5f5] max-w-lg mx-auto md:mx-0">
+                    Selamat datang di
+                    <span class="font-bold text-[#cf8d9e]">ZA & Hi Beauty Care</span>,
+                    tempatnya perawatan kulit premium Anda.
+                </p>
+
+                <div class="pt-4 flex justify-center md:justify-start gap-4">
+                    <a
+                        href="<?php echo e(route('product.index')); ?>"
+                        class="px-8 py-3 rounded-full text-white font-semibold
+                               bg-[#c98892] hover:bg-[#b3747d]
+                               transition transform hover:scale-105 shadow-xl"
+                    >
+                        Jelajahi Produk
+                    </a>
+
+                    <a
+                        href="<?php echo e(route('layanan.index')); ?>"
+                        class="px-8 py-3 rounded-full font-semibold
+                               text-[#d8a0a9] border-2 border-[#d8a0a9]
+                               hover:bg-[#f7e6e9]
+                               transition transform hover:scale-105"
+                    >
+                        Lihat Perawatan
+                    </a>
                 </div>
             </div>
+
+            
+            
+            
+            <div class="relative mt-14 max-w-md">
+
+                
+                <div class="absolute inset-0 rounded-3xl bg-[#efd2d9]/35 scale-105"></div>
+
+                <div class="relative p-8 rounded-3xl bg-white/85">
+                    <h2 class="text-2xl font-playfair font-semibold italic
+                               tracking-[0.08em] text-[#c48797] mb-4">
+                        The Glow Series
+                    </h2>
+
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Paket perawatan lengkap untuk kulit cerah, sehat,
+                        dan bercahaya setiap hari.
+                    </p>
+
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <img
+                                src="<?php echo e(asset('images/serum.jpeg')); ?>"
+                                class="h-36 w-full rounded-xl object-cover"
+                            >
+                            <p class="mt-2 text-sm">Serum</p>
+                        </div>
+
+                        <div>
+                            <img
+                                src="<?php echo e(asset('images/daycream.jpeg')); ?>"
+                                class="h-36 w-full rounded-xl object-cover"
+                            >
+                            <p class="mt-2 text-sm">Day Cream</p>
+                        </div>
+
+                        <div>
+                            <img
+                                src="<?php echo e(asset('images/toner.jpeg')); ?>"
+                                class="h-36 w-full rounded-xl object-cover"
+                            >
+                            <p class="mt-2 text-sm">Toner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-
     </div>
 </section>
 
-<?php endif; ?>
-   
-
-    
-    <h1 class="font-elegant text-4xl md:text-5xl font-semibold tracking-wide mb-4"
-    style="
-        color: #E195AB;
-        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-    ">
-    ZA & Hi Beauty Care
-</h1>
-
-
-
-    
-    <p class="max-w-xl text-lg leading-relaxed mb-8 drop-shadow-lg" style="color: #f9dce4ff;">
-        Salon kecantikan dengan konsep minimalis modern bernuansa pink yang dirancang untuk memberikan kenyamanan sekaligus pengalaman 
-        perawatan yang menyenangkan. Kami hadir sebagai tempat perawatan kecantikan yang menawarkan pelayanan lengkap 
-        mulai dari perawatan wajah, tubuh, rambut, hingga skincare, dengan kualitas terbaik dan harga yang bersahabat.
-    </p>
-    
-    </div>
-
-</section>
 
 
 
@@ -429,5 +501,4 @@ document.addEventListener("DOMContentLoaded", function () {
 <?php echo $__env->make('layouts.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\Za-Hi-Beauty-Care\resources\views/homepage.blade.php ENDPATH**/ ?>

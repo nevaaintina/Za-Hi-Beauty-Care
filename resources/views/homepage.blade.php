@@ -42,46 +42,52 @@
             z-10">
 </div>
 
-    {{-- BACKGROUND IMAGE (LOGIKA LAMA, TETAP) --}}
+    {{-- ========================================================= --}}
+    {{-- BACKGROUND IMAGE 
+    {{-- ========================================================= --}}
     <div class="absolute inset-0">
         @if(!empty($banner) && $banner instanceof \Illuminate\Support\Collection && $banner->count() > 0)
             @foreach($banner as $index => $item)
-                <img src="{{ asset('storage/' . $item->image) }}"
-                     class="banner-img absolute inset-0 w-full h-full object-cover
-                            transition-opacity duration-1000 ease-in-out
-                            {{ $index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0' }}">
+                <img
+                    src="{{ asset('storage/' . $item->image) }}"
+                    class="banner-img absolute inset-0 w-full h-full object-cover
+                           transition-opacity duration-1000 ease-in-out
+                           {{ $index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0' }}"
+                >
             @endforeach
         @else
-            <img src="{{ asset('images/default-banner.jpg') }}"
-                 class="absolute inset-0 w-full h-full object-cover">
+            <img
+                src="{{ asset('images/default-banner.jpg') }}"
+                class="absolute inset-0 w-full h-full object-cover"
+            >
         @endif
     </div>
 
-    {{-- OVERLAY GRADIENT PINK --}}
+    {{-- ========================================================= --}}
+    {{-- OVERLAY GRADIENT --}}
+    {{-- ========================================================= --}}
     <div class="absolute inset-0 z-20 bg-black/45"></div>
 
-
+    {{-- ========================================================= --}}
     {{-- CONTENT --}}
+    {{-- ========================================================= --}}
     <div class="relative z-30 h-full flex items-center px-6 md:px-20 font-inter">
         <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
+            {{-- ========================================================= --}}
             {{-- LEFT CONTENT --}}
+            {{-- ========================================================= --}}
             <div class="space-y-6 text-center md:text-left">
+
                 @auth
-               <h1 class="font-playfair whitespace-nowrap
-           text-5xl sm:text-6xl lg:text-7xl
-           font-extrabold italic leading-tight
-           tracking-[0.06em]
-           text-[#fff5f7]
-           drop-shadow-[0_1px_4px_rgba(148,74,96,0.18)]">
-    Hello, {{ Auth::user()->name }}!
-</h1>
-
-
-
-
-
-
+                    <h1 class="font-playfair whitespace-nowrap
+                               text-5xl sm:text-6xl lg:text-7xl
+                               font-extrabold italic leading-tight
+                               tracking-[0.06em]
+                               text-[#fff5f7]
+                               drop-shadow-[0_1px_4px_rgba(148,74,96,0.18)]">
+                        Hello, {{ Auth::user()->name }}!
+                    </h1>
                 @endauth
 
                 <p class="text-xl text-[#f5f5f5] max-w-lg mx-auto md:mx-0">
@@ -91,69 +97,77 @@
                 </p>
 
                 <div class="pt-4 flex justify-center md:justify-start gap-4">
-                    <a href="{{ route('product.index') }}"
-   class="px-8 py-3 rounded-full text-white font-semibold bg-[#c98892]
-          hover:bg-[#b3747d] transition transform hover:scale-105 shadow-xl">
-    Jelajahi Produk
-</a>
+                    <a
+                        href="{{ route('product.index') }}"
+                        class="px-8 py-3 rounded-full text-white font-semibold
+                               bg-[#c98892] hover:bg-[#b3747d]
+                               transition transform hover:scale-105 shadow-xl"
+                    >
+                        Jelajahi Produk
+                    </a>
 
-                    <a href="{{ route('layanan.index') }}"
-   class="px-8 py-3 rounded-full text-[#d8a0a9] font-semibold
-          border-2 border-[#d8a0a9] hover:bg-[#f7e6e9]
-          transition transform hover:scale-105">
-    Lihat Perawatan
-</a>
+                    <a
+                        href="{{ route('layanan.index') }}"
+                        class="px-8 py-3 rounded-full font-semibold
+                               text-[#d8a0a9] border-2 border-[#d8a0a9]
+                               hover:bg-[#f7e6e9]
+                               transition transform hover:scale-105"
+                    >
+                        Lihat Perawatan
+                    </a>
                 </div>
             </div>
 
+            {{-- ========================================================= --}}
             {{-- RIGHT CARD --}}
-           <!-- CARD PRODUK (DI BAWAH BUTTON) -->
-<div class="relative mt-14 max-w-md">
+            {{-- ========================================================= --}}
+            <div class="relative mt-14 max-w-md">
 
-    <!-- Background pink lembut -->
-    <div class="absolute inset-0 rounded-3xl 
-        bg-[#efd2d9]/35
-        scale-105">
-    </div>
+                {{-- Background pink lembut --}}
+                <div class="absolute inset-0 rounded-3xl bg-[#efd2d9]/35 scale-105"></div>
 
-    <div class="relative p-8 rounded-3xl bg-white/85">
+                <div class="relative p-8 rounded-3xl bg-white/85">
+                    <h2 class="text-2xl font-playfair font-semibold italic
+                               tracking-[0.08em] text-[#c48797] mb-4">
+                        The Glow Series
+                    </h2>
 
-        <h2 class="text-2xl font-playfair
-            font-semibold italic
-            tracking-[0.08em]
-            text-[#c48797]
-            mb-4">
-            The Glow Series
-        </h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Paket perawatan lengkap untuk kulit cerah, sehat,
+                        dan bercahaya setiap hari.
+                    </p>
 
-        <p class="text-gray-600 mb-6 leading-relaxed">
-            Paket perawatan lengkap untuk kulit cerah, sehat, dan bercahaya setiap hari.
-        </p>
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <img
+                                src="{{ asset('images/serum.jpeg') }}"
+                                class="h-36 w-full rounded-xl object-cover"
+                            >
+                            <p class="mt-2 text-sm">Serum</p>
+                        </div>
 
-        <div class="grid grid-cols-3 gap-4 text-center">
-            <div>
-                <img src="{{ asset('images/serum.jpeg') }}" class="h-36 w-full rounded-xl object-cover">
-                <p class="mt-2 text-sm">Serum</p>
+                        <div>
+                            <img
+                                src="{{ asset('images/daycream.jpeg') }}"
+                                class="h-36 w-full rounded-xl object-cover"
+                            >
+                            <p class="mt-2 text-sm">Day Cream</p>
+                        </div>
+
+                        <div>
+                            <img
+                                src="{{ asset('images/toner.jpeg') }}"
+                                class="h-36 w-full rounded-xl object-cover"
+                            >
+                            <p class="mt-2 text-sm">Toner</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <img src="{{ asset('images/daycream.jpeg') }}" class="h-36 w-full rounded-xl object-cover">
-                <p class="mt-2 text-sm">Day Cream</p>
-            </div>
-            <div>
-                <img src="{{ asset('images/toner.jpeg') }}" class="h-36 w-full rounded-xl object-cover">
-                <p class="mt-2 text-sm">Toner</p>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-
 
         </div>
     </div>
 </section>
-
 
 
 {{-- ========================================================= --}}

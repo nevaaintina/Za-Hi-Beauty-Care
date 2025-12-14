@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title') - Admin Panel</title>
+    <title><?php echo $__env->yieldContent('title'); ?> - Admin Panel</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -92,37 +92,37 @@
         </div>
 
         <nav class="p-4 space-y-2">
-            @php
+            <?php
                 $active = fn($path) => request()->is($path) 
                     ? 'bg-dark-pink text-white shadow-lg transform translate-x-1' 
                     : 'hover:bg-light-pink hover:text-dark-pink hover:translate-x-0.5';
-            @endphp
+            ?>
 
-            <a href="/admin/dashboard" class="nav-link flex items-center gap-3 p-3 rounded {{ $active('admin/dashboard') }}">
+            <a href="/admin/dashboard" class="nav-link flex items-center gap-3 p-3 rounded <?php echo e($active('admin/dashboard')); ?>">
                 <i class="fas fa-home w-5 text-center"></i> <span class="sidebar-text">Dashboard</span>
             </a>
 
-            <a href="/admin/users" class="nav-link flex items-center gap-3 p-3 rounded {{ $active('admin/users*') }}">
+            <a href="/admin/users" class="nav-link flex items-center gap-3 p-3 rounded <?php echo e($active('admin/users*')); ?>">
                 <i class="fas fa-users w-5 text-center"></i> <span class="sidebar-text">Users</span>
             </a>
 
-            <a href="/admin/products" class="nav-link flex items-center gap-3 p-3 rounded {{ $active('admin/products*') }}">
+            <a href="/admin/products" class="nav-link flex items-center gap-3 p-3 rounded <?php echo e($active('admin/products*')); ?>">
                 <i class="fas fa-box w-5 text-center"></i> <span class="sidebar-text">Products</span>
             </a>
 
-            <a href="/admin/services" class="nav-link flex items-center gap-3 p-3 rounded {{ $active('admin/services*') }}">
+            <a href="/admin/services" class="nav-link flex items-center gap-3 p-3 rounded <?php echo e($active('admin/services*')); ?>">
                 <i class="fas fa-spa w-5 text-center"></i> <span class="sidebar-text">Services</span>
             </a>
 
-            <a href="/admin/testimonials" class="nav-link flex items-center gap-3 p-3 rounded {{ $active('admin/testimonials*') }}">
+            <a href="/admin/testimonials" class="nav-link flex items-center gap-3 p-3 rounded <?php echo e($active('admin/testimonials*')); ?>">
                 <i class="fas fa-star w-5 text-center"></i> <span class="sidebar-text">Testimoninals</span>
             </a>
 
-            <a href="/admin/gallery" class="nav-link flex items-center gap-3 p-3 rounded {{ $active('admin/gallery*') }}">
+            <a href="/admin/gallery" class="nav-link flex items-center gap-3 p-3 rounded <?php echo e($active('admin/gallery*')); ?>">
                 <i class="fas fa-image w-5 text-center"></i> <span class="sidebar-text">Gallery</span>
             </a>
 
-            <a href="/admin/chats" class="nav-link flex items-center gap-3 p-3 rounded {{ $active('admin/chats*') }}">
+            <a href="/admin/chats" class="nav-link flex items-center gap-3 p-3 rounded <?php echo e($active('admin/chats*')); ?>">
                 <i class="fas fa-comments w-5 text-center"></i> <span class="sidebar-text">Chat</span>
             </a>
 
@@ -142,8 +142,8 @@
             </a>
 
             <!-- Formulir logout -->
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
+            <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                <?php echo csrf_field(); ?>
             </form>
         </nav>
     </aside>
@@ -163,7 +163,7 @@
         </header>
 
         <main class="p-6 animate-fadeIn">
-            @yield('content')
+            <?php echo $__env->yieldContent('content'); ?>
         </main>
 
     </div>
@@ -175,3 +175,4 @@
 
 </body>
 </html>
+<?php /**PATH C:\laragon\www\Za-Hi-Beauty-Care\resources\views/admin/layouts/admin.blade.php ENDPATH**/ ?>

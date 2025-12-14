@@ -1,9 +1,7 @@
-@extends('layouts.app')
+<?php $__env->startSection('title', 'Tambah Testimoni - ZA & Hi'); ?>
 
-@section('title', 'Tambah Testimoni - ZA & Hi')
-
-@section('content')
-@include('layouts.header')
+<?php $__env->startSection('content'); ?>
+<?php echo $__env->make('layouts.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -48,9 +46,9 @@
             Bagikan Pengalaman Anda
         </h2>
 
-        <form method="POST" action="{{ route('testimoni.store') }}"
+        <form method="POST" action="<?php echo e(route('testimoni.store')); ?>"
               enctype="multipart/form-data" class="space-y-6">
-            @csrf
+            <?php echo csrf_field(); ?>
 
             <!-- ================== PILIH LAYANAN ================== -->
             <div>
@@ -62,14 +60,21 @@
                         class="w-full px-3 py-2 border rounded-lg bg-white">
                     <option value="">-- Pilih layanan yang ingin direview --</option>
 
-                    @foreach($services as $service)
-                        <option value="{{ $service->id }}">{{ $service->name }}</option>
-                    @endforeach
+                    <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $service): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($service->id); ?>"><?php echo e($service->name); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
 
-                @error('service_id')
-                    <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
-                @enderror
+                <?php $__errorArgs = ['service_id'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <p class="text-red-600 text-sm mt-1"><?php echo e($message); ?></p>
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             </div>
 
             <!-- ================== UPLOAD FOTO ================== -->
@@ -83,12 +88,26 @@
                     Bisa upload lebih dari satu. Maksimal 5 foto.
                 </small>
 
-                @error('images')
-                    <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
-                @enderror
-                @error('images.*')
-                    <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
-                @enderror
+                <?php $__errorArgs = ['images'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <p class="text-red-600 text-sm mt-1"><?php echo e($message); ?></p>
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                <?php $__errorArgs = ['images.*'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <p class="text-red-600 text-sm mt-1"><?php echo e($message); ?></p>
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             </div>
 
             <!-- ================== RATING ================== -->
@@ -98,16 +117,23 @@
                 </label>
 
                 <div id="stars" class="flex space-x-2 text-3xl rating-star">
-                    @for($i = 1; $i <= 5; $i++)
-                        <i class="fa-regular fa-star" data-value="{{ $i }}"></i>
-                    @endfor
+                    <?php for($i = 1; $i <= 5; $i++): ?>
+                        <i class="fa-regular fa-star" data-value="<?php echo e($i); ?>"></i>
+                    <?php endfor; ?>
                 </div>
 
                 <input type="hidden" name="rating" id="rating" value="0">
 
-                @error('rating')
-                    <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
-                @enderror
+                <?php $__errorArgs = ['rating'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <p class="text-red-600 text-sm mt-1"><?php echo e($message); ?></p>
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             </div>
 
             <!-- ================== ULASAN ================== -->
@@ -118,15 +144,22 @@
                 <textarea name="message" rows="5" required
                     class="w-full px-4 py-3 border rounded-lg bg-white"></textarea>
 
-                @error('message')
-                    <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
-                @enderror
+                <?php $__errorArgs = ['message'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                    <p class="text-red-600 text-sm mt-1"><?php echo e($message); ?></p>
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
             </div>
 
             <!-- ================== BUTTON ACTION ================== -->
             <div class="flex gap-4">
                 <!-- TOMBOL BATAL / BACK -->
-                <a href="{{ url()->previous() }}"
+                <a href="<?php echo e(url()->previous()); ?>"
                    class="w-1/2 text-center py-3 bg-gray-300 text-gray-800 font-semibold
                           rounded-lg shadow-md hover:bg-gray-400 transition">
                     Batal
@@ -144,7 +177,7 @@
     </div>
 </section>
 
-@include('layouts.footer')
+<?php echo $__env->make('layouts.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
 <script>
 const stars = document.querySelectorAll('#stars i');
@@ -179,4 +212,6 @@ stars.forEach((star, index) => {
 });
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\Za-Hi-Beauty-Care\resources\views/testimoni/create_testimoni.blade.php ENDPATH**/ ?>
